@@ -10,7 +10,9 @@ const meta = {
 	tags: ['autodocs'],
 	argTypes: {
 		type: { control: 'select', options: ['primary', 'secondary', 'outline', 'ghost'] },
-		backgroundColor: { control: 'color' },
+    iconBefore: { control: 'select', options: ['arrow_back'] },
+		iconAfter: { control: 'select', options: ['arrow_forward'] },
+		disabled: { control: 'boolean' },
 	},
 	args: {
 		type: 'primary',

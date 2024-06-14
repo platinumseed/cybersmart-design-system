@@ -29,29 +29,29 @@ type Story = StoryObj<typeof meta>;
  * to learn how to use render functions.
  */
 export const Primary: Story = {
-  args: {
-    type: 'primary',
-    label: 'Button',
-  },
+	args: {
+		type: 'primary',
+		label: 'Button',
+	},
 };
 
 export const Secondary: Story = {
-  args: {
-    type: 'secondary',
-    label: 'Button',
-  },
+	args: {
+		type: 'secondary',
+		label: 'Button',
+	},
 };
 
 export const Outline: Story = {
-  args: {
-    type: 'outline',
-    label: 'Button',
-  },
+	args: {
+		type: 'outline',
+		label: 'Button',
+	},
 };
 
 export const Ghost: Story = {
-  args: {
-    type: 'ghost',
-    label: 'Button',
-  },
+	args: {
+		type: 'ghost',
+		label: 'Button',
+	},
 };

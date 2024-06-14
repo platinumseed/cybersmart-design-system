@@ -9,11 +9,11 @@ const meta = {
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],
   argTypes: {
-    size: { control: 'select', options: ['small', 'medium', 'large'] },
+    type: { control: 'select', options: ['primary', 'secondary', 'outline', 'ghost'] },
     backgroundColor: { control: 'color' },
   },
   args: {
-    primary: false,
+    type: 'primary',
     // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
     onClick: fn(),
   },
@@ -28,28 +28,28 @@ type Story = StoryObj<typeof meta>;
  */
 export const Primary: Story = {
   args: {
-    primary: true,
+    type: 'primary',
     label: 'Button',
   },
 };
 
 export const Secondary: Story = {
   args: {
-    primary: false,
+    type: 'secondary',
     label: 'Button',
   },
 };
 
-export const Large: Story = {
+export const Outline: Story = {
   args: {
+    type: 'outline',
     label: 'Button',
-    size: 'large',
   },
 };
 
-export const Small: Story = {
+export const Ghost: Story = {
   args: {
+    type: 'ghost',
     label: 'Button',
-    size: 'small',
   },
 };

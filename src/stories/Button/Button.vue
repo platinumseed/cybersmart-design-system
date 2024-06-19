@@ -18,9 +18,9 @@
 		@click="onClick" 
 		:disabled="disabled"
 	>
-		<span v-if="iconBefore" class="transition-all text-base material-icons" :class="textClasses">{{ iconBefore }}</span>
+		<span v-if="iconBefore" class="transition-all text-base material-symbols-outlined" :class="textClasses">{{ iconBefore }}</span>
 		<span v-if="hasText" class="transition-all" :class="textClasses">{{ label }} </span>
-		<span v-if="iconAfter" class="transition-all text-base material-icons" :class="textClasses">{{ iconAfter }}</span>
+		<span v-if="iconAfter" class="transition-all text-base material-symbols-outlined" :class="textClasses">{{ iconAfter }}</span>
 	</button>
 </template>
 

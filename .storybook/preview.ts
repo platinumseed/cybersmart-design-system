@@ -1,5 +1,5 @@
 import type { Preview } from "@storybook/vue3";
-import '@material-design-icons/font';
+import 'material-symbols/outlined.css';
 import '../src/styles/global.css';
 
 const preview: Preview = {

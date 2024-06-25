@@ -11,7 +11,7 @@
 		"preview": "vite preview",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build",
-		"chromatic": "npx chromatic --project-token=chpt_c63233bfa4f2030",
+		"chromatic": "npx chromatic --project-token=chpt_c63233bfa4f2030"
 	},
 	"dependencies": {
 		"@headlessui/vue": "^1.7.22",

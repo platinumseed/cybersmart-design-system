@@ -7,8 +7,8 @@
 				:id="radioId"
 				:name="name"
 				:checked="modelValue"
-				@change="updateValue($event.target.checked)"
-				:aria-describedby="note ? noteId : null"
+				@change="updateValue"
+				:aria-describedby="note ? noteId : undefined"
 			/>
 			{{ label }}
 		</label>
@@ -42,8 +42,11 @@ const emit = defineEmits < {
 const radioId = computed(() => `checkbox-${Math.random().toString(36).substr(2, 9)}`);
 const noteId = computed(() => `note-${Math.random().toString(36).substr(2, 9)}`);
 
-const updateValue = (value: boolean) => {
-	emit('update:modelValue', value);
+const updateValue = (event: Event) => {
+	const target = event.target as HTMLInputElement;
+	if (target) {
+		emit('update:modelValue', target.checked);
+	}
 };
 
 const inputClass = computed(() => {

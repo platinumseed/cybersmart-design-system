@@ -5,7 +5,7 @@
     "module": "ESNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
-	"types": ["@shoelace-style/shoelace/dist/types/vue"],
+	"types": ["./node_modules/@shoelace-style/shoelace/dist/types/vue"],
 
     /* Bundler mode */
     "moduleResolution": "bundler",

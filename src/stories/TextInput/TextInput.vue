@@ -42,7 +42,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, defineEmits, toRefs, ref, watch } from 'vue';
+import { computed, defineEmits, toRefs, ref } from 'vue';
 
 interface Props {
 	label?: string;

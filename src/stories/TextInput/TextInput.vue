@@ -87,6 +87,7 @@ const inputClass = computed(() => ({
 }));
 
 const labelClass = computed(() => ({
+	'ps-4': !props.icon && props.type !== 'password',
 	'left-14': props.icon || props.type === 'password',
 	'text-sky-500' : focus.value
 }))

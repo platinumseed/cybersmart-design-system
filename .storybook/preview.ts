@@ -1,5 +1,4 @@
 import type { Preview } from "@storybook/vue3";
-import 'material-symbols/outlined.css';
 import '../src/styles/global.css';
 
 //Shoelace

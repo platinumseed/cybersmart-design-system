@@ -3,7 +3,9 @@
 	<div class="">
 		<div class="relative flex gap-4 items-center">
 			<label :class="focus ? 'text-sky-500' : 'text-stone-800'" class=" text-xs absolute left-4 top-2 " v-if="label" :for="name">{{ label }}</label>
-			<textarea class="
+			<textarea 
+				v-bind="$attrs"
+				class="
 					text-slate-400
 					px-4 pb-2 pt-6
 					w-full
@@ -18,7 +20,6 @@
 				:class="inputClass" 
 				:name="name" 
 				:id="name" 
-				v-bind="$attrs" 
 				:value="internalValue"
 				@focus="focus = true"
 				@blur="focus = false"

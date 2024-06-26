@@ -5,7 +5,9 @@
 			<label :class="[labelClass, 'text-stone-800 text-xs absolute top-2']" v-if="label" :for="name">{{ label }}</label>
 			<span v-if="icon && type !== 'password'" class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined">{{ icon }}</span>
 			<span v-if="type === 'password'" class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined">lock</span>
-			<input class="
+			<input 
+				v-bind="$attrs" 
+				class="
 					text-slate-400
 					px-4 pb-2 pt-6
 					w-full
@@ -21,7 +23,7 @@
 				:type="inputType" 
 				:name="name" 
 				:id="name" 
-				v-bind="$attrs" 
+				
 				:value="internalValue"
 				@focus="onFocus"
         		@blur="onBlur"

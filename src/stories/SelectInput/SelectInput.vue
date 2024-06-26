@@ -1,11 +1,11 @@
 <template>
 	<sl-select 
+		v-bind="$attrs" 
 		class="c-select" 
 		:placeholder="placeholder"
 		@sl-show="focus = true"
 		@sl-hide="focus = false"
 		@input="updateValue" 
-		v-bind="$attrs" 
 		:value="internalValue"
 	>
 		<span slot="label" :class="focus ? 'text-sky-500' : 'text-stone-800'" v-if="label">{{ label }}</span>

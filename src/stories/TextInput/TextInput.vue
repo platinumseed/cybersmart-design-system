@@ -2,7 +2,7 @@
 <template>
 	<div class="">
 		<div class="relative">
-			<label :class="[labelClass, 'text-stone-800 text-xs absolute left-4 top-2']" v-if="label" :for="name">{{ label }}</label>
+			<label :class="[labelClass, 'text-stone-800 text-xs absolute top-2']" v-if="label" :for="name">{{ label }}</label>
 			<span v-if="icon && type !== 'password'" class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined">{{ icon }}</span>
 			<span v-if="type === 'password'" class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined">lock</span>
 			<input class="
@@ -81,13 +81,14 @@ const updateValue = (event: Event) => {
 };
 
 const inputClass = computed(() => ({
-	'ps-12': props.icon || props.type === 'password',
-	'pe-12 border-red-600': props.invalid,
+	'ps-14': props.icon || props.type === 'password',
+	'pe-14 border-red-600': props.invalid,
 	'bg-slate-50': props.valid
 }));
 
 const labelClass = computed(() => ({
-	'left-12': props.icon || props.type === 'password',
+	'ps-4': !props.icon && props.type !== 'password',
+	'left-14': props.icon || props.type === 'password',
 	'text-sky-500' : focus.value
 }))
 

@@ -18,7 +18,7 @@
 </template>
   
 <script lang="ts" setup>
-import { defineEmits, computed } from 'vue';
+import { computed } from 'vue';
 
 interface Props {
 	modelValue: boolean;

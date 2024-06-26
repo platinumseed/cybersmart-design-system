@@ -3,7 +3,7 @@
 		<label :for="checkboxId" class="text-stone-800 flex gap-2">
 			<input :class="[inputClass, 'appearance-none w-6 h-6 relative rounded-lg border p-[2px]']" type="checkbox"
 				:id="checkboxId" :name="name" :checked="modelValue" @change="updateValue"
-				:aria-describedby="note ? noteId : undefined" />
+				:aria-describedby="note ? noteId : undefined" role="checkbox" :aria-checked="ariaChecked" />
 			{{ label }}
 		</label>
 		<small v-if="invalid" class="block mt-1 text-red-600 text-xs">{{ invalidMessage }}</small>
@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineEmits, computed } from 'vue';
+import { computed } from 'vue';
 
 interface Props {
 	modelValue: boolean;
@@ -25,7 +25,6 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
 	invalid: false,
-	valid: false,
 	invalidMessage: 'Invalid input',
 });
 
@@ -33,8 +32,8 @@ const emit = defineEmits<{
 	(e: 'update:modelValue', value: boolean): void;
 }>();
 
-const checkboxId = computed(() => `checkbox-${Math.random().toString(36).substr(2, 9)}`);
-const noteId = computed(() => `note-${Math.random().toString(36).substr(2, 9)}`);
+const checkboxId = computed(() => `checkbox-${crypto.randomUUID()}`);
+const noteId = computed(() => `note-${crypto.randomUUID()}`);
 
 const updateValue = (event: Event) => {
 	const target = event.target as HTMLInputElement;
@@ -44,12 +43,10 @@ const updateValue = (event: Event) => {
 };
 
 const inputClass = computed(() => {
-	if (props.invalid) {
-		return 'border-red-600';
-	}
-	return 'border-slate-300';
-})
+	return props.invalid ? 'border-red-600' : 'border-slate-300';
+});
 
+const ariaChecked = computed<'true' | 'false'>(() => (props.modelValue ? 'true' : 'false'));
 </script>
 
 <style scoped>
@@ -71,6 +68,12 @@ input[type="checkbox"]:not(:disabled):checked:before {
 	text-rendering: optimizeLegibility;
 	font-feature-settings: "liga";
 	font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-	@apply block w-[18px] h-[18px] bg-sky-500 rounded-md text-white text-center text-[18px];
+	width: 18px;
+	height: 18px;
+	background: var(--checkbox-checked-bg, #0ea5e9);
+	border-radius: 0.375rem;
+	color: var(--checkbox-checked-color, #fff);
+	text-align: center;
+	font-size: 18px;
 }
 </style>

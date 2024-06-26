@@ -16,16 +16,29 @@
         <my-button size="small" @click="$emit('logout')" label="Log out" v-if="user" />
         <my-button size="small" @click="$emit('login')" label="Log in" v-if="!user" />
         <my-button primary size="small" @click="$emit('createAccount')" label="Sign up" v-if="!user" />
+		<DsCheckbox
+			v-model="checked"
+			label="Agree to terms"
+			name="terms"
+			:invalid="isInvalid"
+			invalid-message="You must agree to the terms."
+			note="Please check the box."
+		/>
       </div>
     </div>
   </header>
 </template>
 
 <script lang="ts" setup>
+import { ref } from 'vue';
 import './header.css';
 import MyButton from './Button/Button.vue';
+import DsCheckbox from './Checkbox/Checkbox.vue';
 
 defineProps<{ user: { name: string } | null }>();
+
+const checked = ref(false);
+const isInvalid = ref(false);
 
 defineEmits<{
   (event: 'createAccount'): void;

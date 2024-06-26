@@ -64,7 +64,10 @@ const props = withDefaults(defineProps<Props>(), {
 	valid: false,
 	invalidMessage: 'Invalid input',
 });
-const emit = defineEmits<{ (e: 'update:modelValue', value: string | number): void }>();
+const emit = defineEmits<{
+  (e: 'update:modelValue', value: string | number): void;
+  (e: 'focus', event: FocusEvent): void;
+}>();
 
 const { modelValue } = toRefs(props);
 
@@ -101,9 +104,9 @@ const inputType = computed(() => {
 	return props.type
 });
 
-const onFocus = () => {
-  focus.value = true;
-};
+function onFocus(event: FocusEvent) {
+  emit('focus', event);
+}
 
 const onBlur = () => {
   focus.value = false;

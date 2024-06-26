@@ -1,9 +1,17 @@
 <template>
 	<div class="flex flex-col gap-1">
 		<label :for="checkboxId" class="text-stone-800 flex gap-2">
-			<input :class="[inputClass, 'appearance-none w-6 h-6 relative rounded-lg border p-[2px]']" type="checkbox"
-				:id="checkboxId" :name="name" :checked="modelValue" @change="updateValue"
-				:aria-describedby="note ? noteId : undefined" role="checkbox" :aria-checked="ariaChecked" />
+			<input 
+				:class="[inputClass, 'appearance-none w-6 h-6 relative rounded-lg border p-[2px]']" 
+				type="checkbox"
+				:id="checkboxId" 
+				:name="name" 
+				:checked="modelValue" 
+				@change="updateValue"
+				:aria-describedby="note ? noteId : undefined" 
+				role="checkbox" 
+				:aria-checked="ariaChecked" 
+			/>
 			{{ label }}
 		</label>
 		<small v-if="invalid" class="block mt-1 text-red-600 text-xs">{{ invalidMessage }}</small>
@@ -38,6 +46,7 @@ const noteId = computed(() => `note-${crypto.randomUUID()}`);
 const updateValue = (event: Event) => {
 	const target = event.target as HTMLInputElement;
 	if (target) {
+		console.log('updated:' + target.checked);
 		emit('update:modelValue', target.checked);
 	}
 };

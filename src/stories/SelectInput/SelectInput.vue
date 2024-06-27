@@ -10,22 +10,27 @@
 	>
 		<span 
 			slot="label" 
-			:class="focus ? 'text-sky-500' : 'text-stone-800'" 
+			:class="labelClass" 
 			v-if="label"
 		>{{ label }}</span>
-		<sl-option v-for="option in options" :key="option.value" class="c-select-option" :value="option.value">{{ option.label }}</sl-option>
+		<sl-option v-for="option in options" :key="option.value" class="c-select-option" :value="option.value">
+			<div v-if="option.icon" slot="prefix" class="text-6 material-symbols-outlined">{{ option.icon }}</div>
+			{{ option.label }}
+		</sl-option>
 		<div slot="expand-icon" class="text-6 material-symbols-outlined">keyboard_arrow_down</div>
 	</sl-select>
+	<small v-if="invalid" class="block mt-1 text-red-600 text-xs ">{{ invalidMessage }}</small>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import '@shoelace-style/shoelace/dist/components/select/select.js';
 import '@shoelace-style/shoelace/dist/components/option/option.js';
 
 interface Option {
 	label: string;
 	value: string | number;
+	icon?: string;
 }
 
 interface Props {
@@ -55,6 +60,31 @@ const updateValue = (event: Event) => {
 	console.log(target.value);
 	emit('update:modelValue', target.value);
 };
+
+const comboboxBorderColor = computed(() => {
+	if (focus.value) {
+		return '#209FD6';
+	}
+	if (props.invalid) {
+		return '#DC2626';
+	}
+	return '#CBD5E1';
+});
+
+const comboboxBackgroundColor = computed(() => {
+	return props.valid ? '#F8FAFC' : 'transparent'
+});
+
+const labelClass = computed(() => {
+	if (focus.value) {
+		return 'text-sky-500';
+	}
+	if (props.invalid) {
+		return 'text-red-600';
+	}
+	return 'text-stone-800';
+})
+
 </script>
 
 <style scoped>

@@ -13,7 +13,6 @@
 					w-full
 					rounded-xl 
 					border 
-					border-slate-300
 					bg-white
 					transition-all
 					focus:border-sky-500
@@ -89,14 +88,15 @@ const updateValue = (event: Event) => {
 const inputClass = computed(() => ({
 	'ps-14': props.icon || props.type === 'password',
 	'pe-14 border-red-600': props.invalid,
-	'bg-slate-50': props.valid
+	'bg-slate-50 border-slate-300': props.valid
 }));
 
 const labelClass = computed(() => ({
 	'ps-4': !props.icon && props.type !== 'password',
 	'left-14': props.icon || props.type === 'password',
-	'text-sky-500' : focus.value,
-	'text-stone-800' : !focus.value,
+	'text-sky-500' : focus.value && !props.invalid,
+	'text-stone-800': !focus.value && !props.invalid,
+	'text-red-600': props.invalid
 }))
 
 const inputType = computed(() => {

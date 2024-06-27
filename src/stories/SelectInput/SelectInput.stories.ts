@@ -8,9 +8,9 @@ const meta: Meta<typeof SelectInput> = {
 	args: {
 		label: 'Select Input',
 		options: [
-			{ label: 'Option 1', value: 'value-1' },
-			{ label: 'Option 2', value: 'value-2' },
-			{ label: 'Option 3', value: 'value-3' },
+			{ label: 'Option 1', value: 'value-1', icon: 'account_circle' },
+			{ label: 'Option 2', value: 'value-2', icon: 'account_circle' },
+			{ label: 'Option 3', value: 'value-3', icon: 'account_circle' },
 		],
 		modelValue: '',
 	},

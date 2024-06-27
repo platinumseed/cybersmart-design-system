@@ -2,7 +2,7 @@
 <template>
 	<div class="">
 		<div class="relative flex gap-4 items-center">
-			<label :class="focus ? 'text-sky-500' : 'text-stone-800'" class=" text-xs absolute left-4 top-2 transition-all" v-if="label" :for="name">{{ label }}</label>
+			<label :class="labelClass" class=" text-xs absolute left-4 top-2 transition-all" v-if="label" :for="name">{{ label }}</label>
 			<textarea 
 				v-bind="$attrs"
 				class="
@@ -11,7 +11,6 @@
 					w-full
 					rounded-xl 
 					border 
-					border-slate-300
 					bg-white
 					transition-all
 					focus:border-sky-500
@@ -89,8 +88,18 @@ const onBlur = (event: FocusEvent) => {
 
 const inputClass = computed(() => ({
 	'pe-12 border-red-600': props.invalid,
-	'bg-slate-50': props.valid
+	'bg-slate-50 border-slate-300': props.valid
 }));
+
+const labelClass = computed(() => {
+	if (focus.value) {
+		return 'text-sky-500';
+	}
+	if (props.invalid) {
+		return 'text-red-600';
+	}
+	return 'text-stone-800';
+})
 
 </script>
 

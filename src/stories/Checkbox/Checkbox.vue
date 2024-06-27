@@ -46,7 +46,6 @@ const noteId = computed(() => `note-${crypto.randomUUID()}`);
 const updateValue = (event: Event) => {
 	const target = event.target as HTMLInputElement;
 	if (target) {
-		console.log('updated:' + target.checked);
 		emit('update:modelValue', target.checked);
 	}
 };

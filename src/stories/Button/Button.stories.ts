@@ -10,8 +10,8 @@ const meta = {
 	tags: ['autodocs'],
 	argTypes: {
 		type: { control: 'select', options: ['primary', 'secondary', 'outline', 'ghost'] },
-		iconBefore: { control: 'select', options: ['arrow_back', 'check_circle'] },
-		iconAfter: { control: 'select', options: ['arrow_forward', 'check_circle'] },
+		iconBefore: { control: 'select', options: ['arrow_back', 'check_circle', 'arrow_right_alt'] },
+		iconAfter: { control: 'select', options: ['arrow_forward', 'check_circle', 'arrow_right_alt'] },
 		disabled: { control: 'boolean' },
 	},
 	args: {

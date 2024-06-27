@@ -19,6 +19,7 @@ export default {
 				'light-blue': '#F0FAFE',
 				'digital-black': '#231F20',
 				'orange': '#FF9B19',
+				'teal': '#AEF8D8' 
 			},
 		},
 	},

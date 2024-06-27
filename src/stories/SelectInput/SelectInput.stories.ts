@@ -7,6 +7,11 @@ const meta: Meta<typeof SelectInput> = {
 	component: SelectInput,
 	args: {
 		label: 'Select Input',
+		options: [
+			{ label: 'Option 1', value: 'value-1' },
+			{ label: 'Option 2', value: 'value-2' },
+			{ label: 'Option 3', value: 'value-3' },
+		],
 		modelValue: '',
 	},
 	argTypes: {

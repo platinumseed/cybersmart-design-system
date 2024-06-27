@@ -2,7 +2,7 @@
 <template>
 	<div class="">
 		<div class="relative flex gap-4 items-center">
-			<label :class="focus ? 'text-sky-500' : 'text-stone-800'" class=" text-xs absolute left-4 top-2 " v-if="label" :for="name">{{ label }}</label>
+			<label :class="focus ? 'text-sky-500' : 'text-stone-800'" class=" text-xs absolute left-4 top-2 transition-all" v-if="label" :for="name">{{ label }}</label>
 			<textarea 
 				v-bind="$attrs"
 				class="
@@ -21,8 +21,8 @@
 				:name="name" 
 				:id="name" 
 				:value="internalValue"
-				@focus="focus = true"
-				@blur="focus = false"
+				@focus="onFocus"
+        		@blur="onBlur"
 				@input="updateValue" 
 				:placeholder="placeholder" 
 			/>
@@ -56,11 +56,15 @@ const props = withDefaults(defineProps<Props>(), {
 	invalidMessage: 'Invalid input',
 });
 
-const emit = defineEmits<{ (e: 'update:modelValue', value: string | number): void }>();
+const emit = defineEmits<{
+  (e: 'update:modelValue', value: string | number): void;
+  (e: 'focus', event: FocusEvent): void;
+  (e: 'blur', event: FocusEvent): void;
+}>();
 
 const { modelValue } = toRefs(props);
 
-const focus = ref(false)
+const focus = ref(false);
 
 const internalValue = computed({
 	get: () => modelValue.value,
@@ -71,6 +75,17 @@ const updateValue = (event: Event) => {
 	const target = event.target as HTMLInputElement;
 	internalValue.value = target.value;
 };
+
+function onFocus(event: FocusEvent) {
+	focus.value = true;
+  	emit('focus', event);
+}
+
+const onBlur = (event: FocusEvent) => {
+	focus.value = false;
+	emit('blur', event);
+};
+
 
 const inputClass = computed(() => ({
 	'pe-12 border-red-600': props.invalid,

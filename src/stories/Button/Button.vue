@@ -8,7 +8,6 @@
 			items-center 
 			gap-2 
 			focus-visible:outline-none
-			focus-visible:ring-cyan-300
 			focus-visible:ring-4
 			disabled:opacity-50
 			disabled:cursor-not-allowed
@@ -18,9 +17,9 @@
 		@click="onClick" 
 		:disabled="disabled"
 	>
-		<span v-if="iconBefore" class="transition-all text-base material-symbols-outlined" :class="textClasses">{{ iconBefore }}</span>
-		<span v-if="hasText" class="transition-all" :class="textClasses">{{ label }} </span>
-		<span v-if="iconAfter" class="transition-all text-base material-symbols-outlined" :class="textClasses">{{ iconAfter }}</span>
+		<span v-if="iconBefore" class="transition-all font-semibold text-base material-symbols-outlined" :class="textClasses">{{ iconBefore }}</span>
+		<span v-if="hasText" class="transition-all font-semibold" :class="textClasses">{{ label }} </span>
+		<span v-if="iconAfter" class="transition-all font-semibold text-base material-symbols-outlined" :class="textClasses">{{ iconAfter }}</span>
 	</button>
 </template>
 
@@ -47,7 +46,7 @@ const props = withDefaults(defineProps<{
 	/**
 	 * Is button disabled?
 	 */
-	disabled: boolean,
+	disabled?: boolean,
 
 }>(), {
 	type: 'primary',
@@ -59,21 +58,22 @@ const emit = defineEmits<{
 }>();
 
 const hasText = computed(() => {
-	return props.label && props.label !== ''
+	return props.label && props.label !== '' ? true : false;
 });
 
 const buttonClasses = computed(() => ({
 	'rounded-full border': props.type == 'primary' || props.type == 'secondary' || props.type == 'outline',
-	'bg-orange border-orange hover:bg-amber-600 hover:border-amber-600': props.type == 'primary',
-	'bg-blue border-blue hover:border-sky-600 hover:bg-sky-600': props.type == 'secondary',
-	'bg-white border-blue hover:border-sky-600': props.type == 'outline',
-	'': props.type == 'ghost',
-	'p-3' : !hasText,
-	'px-5 py-3' : hasText
+	'bg-teal border-teal hover:bg-emerald-300 hover:border-emerald-300 focus-visible:ring-green-400': props.type == 'primary',
+	'bg-blue border-blue hover:border-sky-600 hover:bg-sky-600 focus-visible:ring-sky-900': props.type == 'secondary',
+	'bg-white border-blue hover:border-sky-600 focus-visible:ring-sky-900': props.type == 'outline',
+	'focus-visible:ring-sky-900': props.type == 'ghost',
+	'w-12 h-12 text-center flex flex-col justify-center' : !hasText.value,
+	'px-5 py-3' : hasText.value
 }));
 
 const textClasses = computed(() => ({
-	'text-white': props.type == 'primary' || props.type == 'secondary',
+	'text-slate-900': props.type == 'primary',
+	'text-white': props.type == 'secondary',
 	'text-blue group-hover:text-sky-600': props.type == 'outline',
 	'text-digital-black hover:text-blue': props.type == 'ghost',
 }));

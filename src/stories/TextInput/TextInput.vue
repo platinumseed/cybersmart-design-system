@@ -2,7 +2,7 @@
 <template>
 	<div class="">
 		<div class="relative">
-			<label :class="[labelClass, 'text-stone-800 text-xs absolute top-2']" v-if="label" :for="name">{{ label }}</label>
+			<label :class="[labelClass, 'text-xs absolute top-2 transition-all']" v-if="label" :for="name">{{ label }}</label>
 			<span v-if="icon && type !== 'password'" class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined">{{ icon }}</span>
 			<span v-if="type === 'password'" class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined">lock</span>
 			<input 
@@ -23,7 +23,6 @@
 				:type="inputType" 
 				:name="name" 
 				:id="name" 
-				
 				:value="internalValue"
 				@focus="onFocus"
         		@blur="onBlur"
@@ -64,9 +63,11 @@ const props = withDefaults(defineProps<Props>(), {
 	valid: false,
 	invalidMessage: 'Invalid input',
 });
+
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string | number): void;
   (e: 'focus', event: FocusEvent): void;
+  (e: 'blur', event: FocusEvent): void;
 }>();
 
 const { modelValue } = toRefs(props);
@@ -94,7 +95,8 @@ const inputClass = computed(() => ({
 const labelClass = computed(() => ({
 	'ps-4': !props.icon && props.type !== 'password',
 	'left-14': props.icon || props.type === 'password',
-	'text-sky-500' : focus.value
+	'text-sky-500' : focus.value,
+	'text-stone-800' : !focus.value,
 }))
 
 const inputType = computed(() => {
@@ -105,11 +107,13 @@ const inputType = computed(() => {
 });
 
 function onFocus(event: FocusEvent) {
-  emit('focus', event);
+	focus.value = true;
+  	emit('focus', event);
 }
 
-const onBlur = () => {
-  focus.value = false;
+const onBlur = (event: FocusEvent) => {
+	focus.value = false;
+	emit('blur', event);
 };
 
 const togglePasswordVisibility = () => {

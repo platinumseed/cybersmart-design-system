@@ -27,6 +27,7 @@ const meta: Meta<typeof Carousel> = {
 	argTypes: {
 		slidesPerPage: { control: 'select', options: [1, 2, 3, 4] },
 	},
+	tags: ['autodocs'],
 };
 
 export default meta;

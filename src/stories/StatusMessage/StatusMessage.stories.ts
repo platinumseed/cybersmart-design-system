@@ -11,6 +11,7 @@ const meta: Meta<typeof StatusMessage> = {
 	argTypes: {
 		type: { control: 'select', options: ['accent', 'muted', 'warning', 'success', 'error'] },
 	},
+	tags: ['autodocs'],
 };
 
 export default meta;

@@ -21,6 +21,7 @@ const meta: Meta<typeof TextArea> = {
 		invalidMessage: { control: 'text' },
 		modelValue: { control: 'text' },
 	},
+	tags: ['autodocs'],
 };
 
 export default meta;

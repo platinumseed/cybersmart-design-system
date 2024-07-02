@@ -9,6 +9,7 @@ const meta: Meta<typeof Breadcrumbs> = {
 	argTypes: {
 
 	},
+	tags: ['autodocs'],
 };
 
 export default meta;

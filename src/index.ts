@@ -12,6 +12,8 @@ import TextArea from './stories/TextArea/TextArea.vue';
 import SelectInput from './stories/SelectInput/SelectInput.vue';
 import Checkbox from './stories/Checkbox/Checkbox.vue';
 import Radio from './stories/Radio/Radio.vue';
+import Tooltip from './stories/Tooltip/Tooltip.vue';
+import Toast from './stories/Toast/Toast.vue';
 // Add other component imports as needed...
 
 // Function to register all components globally
@@ -29,7 +31,8 @@ export function registerComponents(app: App): void {
   app.component(`${prefix}SelectInput`, SelectInput);
   app.component(`${prefix}Checkbox`, Checkbox);
   app.component(`${prefix}Radio`, Radio);
-  app.component(`${prefix}Radio`, Radio);
+  app.component(`${prefix}Tooltip`, Tooltip);
+  app.component(`${prefix}Toast`, Toast);
   // Register other components...
 }
 

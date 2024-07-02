@@ -10,6 +10,7 @@ const meta: Meta<typeof Badge> = {
 	argTypes: {
 		type: { control: 'select', options: ['accent', 'muted', 'warning', 'success', 'error'] },
 	},
+	tags: ['autodocs'],
 };
 
 export default meta;

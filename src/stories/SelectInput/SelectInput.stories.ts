@@ -18,6 +18,7 @@ const meta: Meta<typeof SelectInput> = {
 		label: { control: 'text' },
 		modelValue: { control: 'text' },
 	},
+	tags: ['autodocs'],
 };
 
 export default meta;

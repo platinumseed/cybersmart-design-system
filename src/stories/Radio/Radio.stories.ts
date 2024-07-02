@@ -19,6 +19,7 @@ const meta: Meta<typeof Radio> = {
 		invalidMessage: { control: 'text' },
 		modelValue: { control: 'text' },
 	},
+	tags: ['autodocs'],
 };
 
 export default meta;

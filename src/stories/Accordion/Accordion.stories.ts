@@ -9,6 +9,7 @@ const meta: Meta<typeof Accordion> = {
 	},
 	argTypes: {
 	},
+	tags: ['autodocs'],
 };
 
 export default meta;

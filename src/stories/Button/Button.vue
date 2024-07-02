@@ -1,5 +1,7 @@
 <template>
-	<button 
+	<component
+		:is="el"
+		:href="href"
 		type="button" 
 		class="
 			group
@@ -20,7 +22,7 @@
 		<span v-if="iconBefore" class="transition-all font-semibold text-base material-symbols-outlined" :class="textClasses">{{ iconBefore }}</span>
 		<span v-if="hasText" class="transition-all font-semibold" :class="textClasses">{{ label }} </span>
 		<span v-if="iconAfter" class="transition-all font-semibold text-base material-symbols-outlined" :class="textClasses">{{ iconAfter }}</span>
-	</button>
+	</component>
 </template>
 
 <script lang="ts" setup>
@@ -47,6 +49,10 @@ const props = withDefaults(defineProps<{
 	 * Is button disabled?
 	 */
 	disabled?: boolean,
+	/**
+	 * Link to which button should go
+	 */
+	 href?: string,
 
 }>(), {
 	type: 'primary',
@@ -77,6 +83,8 @@ const textClasses = computed(() => ({
 	'text-blue group-hover:text-sky-600': props.type == 'outline',
 	'text-digital-black hover:text-blue': props.type == 'ghost',
 }));
+
+const el = computed(() => props.href ? 'a' : 'button');
 
 const onClick = () => {
 	emit("click", 1)

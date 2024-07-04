@@ -17,7 +17,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 interface Props {
-	href: string
+	href?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {});

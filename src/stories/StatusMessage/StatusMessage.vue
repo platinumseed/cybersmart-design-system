@@ -1,6 +1,9 @@
 <template>
 	<div :class="['c-status-message', statusMessageClass]">
-		<Badge :type="type">{{ badgeContent }}</Badge>
+		<Badge class="flex items-center" :type="type">
+			<span :class="['w-2 h-2 rounded-full shrink-0 me-3', iconColor]"></span>
+			<span>{{ badgeContent }}</span>
+		</Badge>
 		<div class="text-nowrap font-normal text-stone-800 text-base">
 			<marquee class="relative top-[3px]"><slot /></marquee>
 		</div>
@@ -26,6 +29,14 @@ const statusMessageClass = computed(() => ({
 	'c-status-message--warning': props.type === 'warning',
 	'c-status-message--success': props.type === 'success',
 	'c-status-message--error': props.type === 'error',
+}))
+
+const iconColor = computed(() => ({
+	'bg-sky-500': props.type === 'accent',
+	'bg-slate-300': props.type === 'muted',
+	'bg-green-600': props.type === 'success',
+	'bg-orange-600': props.type === 'warning',
+	'bg-red-600': props.type === 'error',
 }))
 </script>
 

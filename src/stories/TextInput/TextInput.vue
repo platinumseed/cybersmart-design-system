@@ -3,8 +3,8 @@
 	<div class="">
 		<div class="relative">
 			<label :class="[labelClass, 'text-xs absolute top-2 transition-all']" v-if="label" :for="name">{{ label }}</label>
-			<span v-if="icon && type !== 'password'" class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined">{{ icon }}</span>
-			<span v-if="type === 'password'" class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined">lock</span>
+			<span v-if="icon && type !== 'password'" class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined" aria-hidden="true">{{ icon }}</span>
+			<span v-if="type === 'password'" class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined" aria-hidden="true">lock</span>
 			<input 
 				v-bind="$attrs" 
 				class="

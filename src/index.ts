@@ -15,6 +15,7 @@ import Radio from './stories/Radio/Radio.vue';
 import Tooltip from './stories/Tooltip/Tooltip.vue';
 import Toast from './stories/Toast/Toast.vue';
 import Logo from './stories/Logo/Logo.vue';
+import SearchInput from './stories/SearchInput/SearchInput.vue';
 // Add other component imports as needed...
 
 // Function to register all components globally
@@ -35,6 +36,7 @@ export function registerComponents(app: App): void {
   app.component(`${prefix}Tooltip`, Tooltip);
   app.component(`${prefix}Toast`, Toast);
   app.component(`${prefix}Logo`, Logo);
+  app.component(`${prefix}SearchInput`, SearchInput);
   // Register other components...
 }
 

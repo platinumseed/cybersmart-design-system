@@ -20,6 +20,7 @@ const badgeClass = computed(() => ({
 	'c-badge--warning': props.type === 'warning',
 	'c-badge--success': props.type === 'success',
 	'c-badge--error': props.type === 'error',
+	'c-badge--white': props.type === 'white',
 }))
 </script>
 
@@ -29,7 +30,7 @@ const badgeClass = computed(() => ({
 }
 
 .c-badge--accent::part(base) {
-	@apply text-sky-500 border-sky-500 bg-white
+	@apply text-sky-500 border-sky-500 bg-transparent
 }
 
 .c-badge--muted::part(base) {
@@ -46,5 +47,9 @@ const badgeClass = computed(() => ({
 
 .c-badge--error::part(base) {
 	@apply text-red-500 border-red-600 bg-white
+}
+
+.c-badge--white::part(base) {
+	@apply text-white border-white bg-transparent
 }
 </style>

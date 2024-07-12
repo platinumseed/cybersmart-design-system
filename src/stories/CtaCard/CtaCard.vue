@@ -32,7 +32,7 @@
 				<slot name="description" />
 			</div>
 			<div class="flex justify-between">
-				<div class="flex gap-3">
+				<div class="flex gap-3 flex-wrap">
 					<template v-if="tags">
 						<Badge v-for="tag in tags" :key="tag" :type="badgeType">{{ tag }}</Badge>
 					</template>

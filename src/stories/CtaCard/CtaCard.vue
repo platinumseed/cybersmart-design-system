@@ -58,7 +58,7 @@
 		</div>
 	</div>
 	
-	<div class="perspective-1000 cursor-pointer" @click="flipCard">
+	<div class="perspective-1000 cursor-pointer md:hidden" @click="flipCard">
 		<div :class="{'!rotate-y-180': isFlipped}" class="relative transform-style-3d transition-transform duration-1000 transform">
 			<div class="backface-hidden absolute w-full h-full inset-0 rotate-y-0">
 				<div 

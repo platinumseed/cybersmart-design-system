@@ -19,6 +19,7 @@ import SearchInput from './stories/SearchInput/SearchInput.vue';
 import CtaCard from './stories/CtaCard/CtaCard.vue';
 import SectionIntro from './stories/SectionIntro/SectionIntro.vue';
 import FeatureCard from './stories/FeatureCard/FeatureCard.vue';
+import FeatureList from './stories/FeatureList/FeatureList.vue';
 // Add other component imports as needed...
 
 // Function to register all components globally
@@ -43,6 +44,7 @@ export function registerComponents(app: App): void {
   app.component(`${prefix}CtaCard`, CtaCard);
   app.component(`${prefix}SectionIntro`, SectionIntro);
   app.component(`${prefix}FeatureCard`, FeatureCard);
+  app.component(`${prefix}FeatureList`, FeatureList);
   // Register other components...
 }
 

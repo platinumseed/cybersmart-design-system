@@ -45,6 +45,7 @@
 					label=""
 					icon-before="south_east"
 					:href="url"
+					class="shrink-0"
 				/>
 			</div>
 		</div>
@@ -58,7 +59,7 @@
 		</div>
 	</div>
 	
-	<div class="perspective-1000 cursor-pointer md:hidden" @click="flipCard">
+	<div @click="flipCard" class="perspective-1000 cursor-pointer md:hidden h-[308px]">
 		<div :class="{'!rotate-y-180': isFlipped}" class="relative transform-style-3d transition-transform duration-1000 transform">
 			<div class="backface-hidden absolute w-full h-full inset-0 rotate-y-0">
 				<div 

@@ -18,6 +18,8 @@ export default {
 				'navy': '#021B31',
 				'light-blue': '#F0FAFE',
 				'digital-black': '#231F20',
+				'primary': '#231F20',
+				'secondary': '#64748B',
 				'teal': '#AEF8D8' 
 			},
 		},

@@ -81,7 +81,7 @@ const textClasses = computed(() => ({
 	'text-slate-900': props.type == 'primary',
 	'text-white': props.type == 'secondary',
 	'text-blue group-hover:text-sky-600': props.type == 'outline',
-	'text-digital-black hover:text-blue': props.type == 'ghost',
+	'text-digital-black group-hover:text-blue': props.type == 'ghost',
 }));
 
 const el = computed(() => props.href ? 'a' : 'button');

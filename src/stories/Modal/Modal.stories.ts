@@ -5,7 +5,7 @@ import Button from '../Button/Button.vue';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta: Meta<typeof Modal> = {
-	title: 'Cards/Modal',
+	title: 'UI Components/Modal',
 	component: Modal,
 	args: {
 

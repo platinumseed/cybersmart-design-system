@@ -1,5 +1,11 @@
 <template>
-	<sl-dialog ref="modal" :label="label" :open="open" class="c-modal">
+	<sl-dialog 
+		ref="modal" 
+		:label="label" 
+		:open="open" 
+		class="c-modal"
+		@sl-request-close="handleCloseEvent"
+	>
 		<slot />
 		<a href="#" slot="footer" @click.prevent="closeModal" variant="primary">
 
@@ -14,10 +20,12 @@ import '@shoelace-style/shoelace/dist/components/dialog/dialog.js';
 interface Props {
 	open?: boolean
 	label?: string
+	blockClose?: boolean
 }
 
-withDefaults(defineProps<Props>(), {
-	open: false
+const props = withDefaults(defineProps<Props>(), {
+	open: false,
+	blockClose: false
 });
 
 const modal = ref<HTMLElement | null>(null);
@@ -28,11 +36,17 @@ const closeModal = () => {
 	}
 };
 
+const handleCloseEvent = (event: Event) => {
+	if (props.blockClose) {
+		event.preventDefault();
+	}
+}
+
 </script>
 
 <style scoped>
 .c-modal::part(panel) {
-	@apply rounded-3xl p-10 relative
+	@apply rounded-3xl p-10 relative w-[70%]
 }
 
 .c-modal::part(header) {

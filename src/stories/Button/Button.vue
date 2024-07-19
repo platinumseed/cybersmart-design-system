@@ -2,6 +2,7 @@
 	<component
 		:is="el"
 		:href="href"
+		:target="target"
 		type="button" 
 		class="
 			group
@@ -52,11 +53,17 @@ const props = withDefaults(defineProps<{
 	/**
 	 * Link to which button should go
 	 */
-	 href?: string,
+	href?: string,
+	/**
+ 	* Link target
+	*/
+	target?: '_blank' | '_self' | '_parent' | '_top'
+	 
 
 }>(), {
 	type: 'primary',
-	disabled: false
+	disabled: false,
+	target: '_self'
 });
 
 const emit = defineEmits<{

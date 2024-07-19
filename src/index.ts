@@ -21,6 +21,7 @@ import SectionIntro from './stories/SectionIntro/SectionIntro.vue';
 import FeatureCard from './stories/FeatureCard/FeatureCard.vue';
 import FeatureList from './stories/FeatureList/FeatureList.vue';
 import Modal from './stories/Modal/Modal.vue';
+import LinkCard from './stories/LinkCard/LinkCard.vue';
 // Add other component imports as needed...
 
 // Function to register all components globally
@@ -47,6 +48,7 @@ export function registerComponents(app: App): void {
   app.component(`${prefix}FeatureCard`, FeatureCard);
   app.component(`${prefix}FeatureList`, FeatureList);
   app.component(`${prefix}Modal`, Modal);
+  app.component(`${prefix}Modal`, LinkCard);
   // Register other components...
 }
 

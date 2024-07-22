@@ -21,13 +21,17 @@
 				flex-col
 				gap-9
 				relative
+				h-full
+				justify-between
 			"
 		>
-			<div v-if="$slots.title" class="text-blue group-hover:text-white transition-all">
-				<slot name="title" />
-			</div>
-			<div class="text-slate-400 group-hover:text-white transition-all">
-				<slot />
+			<div>
+				<div v-if="$slots.title" class="text-blue group-hover:text-white transition-all mb-9">
+					<slot name="title" />
+				</div>
+				<div class="text-slate-400 group-hover:text-white transition-all">
+					<slot />
+				</div>
 			</div>
 			<div class="flex justify-between items-end">
 				<FeatureList :feature-items="features" :iconColor="featureColor" :textColor="featureColor"  />

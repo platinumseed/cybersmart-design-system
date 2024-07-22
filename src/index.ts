@@ -48,7 +48,7 @@ export function registerComponents(app: App): void {
   app.component(`${prefix}FeatureCard`, FeatureCard);
   app.component(`${prefix}FeatureList`, FeatureList);
   app.component(`${prefix}Modal`, Modal);
-  app.component(`${prefix}Modal`, LinkCard);
+  app.component(`${prefix}LinkCard`, LinkCard);
   // Register other components...
 }
 

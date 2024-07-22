@@ -7,6 +7,7 @@
 			hidden
 			md:flex 
 			flex-col 
+			justify-between
 			overflow-hidden
 			group	
 		"

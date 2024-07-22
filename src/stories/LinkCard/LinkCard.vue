@@ -23,7 +23,7 @@
 				relative
 			"
 		>
-			<div class="text-blue group-hover:text-white transition-all">
+			<div v-if="$slots.title" class="text-blue group-hover:text-white transition-all">
 				<slot name="title" />
 			</div>
 			<div class="text-slate-400 group-hover:text-white transition-all">

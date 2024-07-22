@@ -22,7 +22,6 @@
 				gap-9
 				relative
 				h-full
-				justify-between
 			"
 		>
 			<div>
@@ -33,19 +32,19 @@
 					<slot />
 				</div>
 			</div>
-			<div class="flex justify-between items-end">
+			<div class="w-[calc(100%_-_88px)]">
 				<FeatureList :feature-items="features" :iconColor="featureColor" :textColor="featureColor"  />
-				<Button
-					v-if="url"
-					type="primary"
-					v-on:click="()=>({})"
-					label=""
-					icon-before="south_east"
-					:href="url"
-					:target="target"
-					class="shrink-0"
-				/>
 			</div>
+			<Button
+				v-if="url"
+				type="primary"
+				v-on:click="()=>({})"
+				label=""
+				icon-before="south_east"
+				:href="url"
+				:target="target"
+				class="absolute bottom-10 right-10"
+			/>
 		</div>
 	</div>
 </template>

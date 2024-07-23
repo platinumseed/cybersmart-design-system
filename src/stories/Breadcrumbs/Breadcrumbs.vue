@@ -1,5 +1,5 @@
 <template>
-	<sl-breadcrumb class="c-breadcrumbs">
+	<sl-breadcrumb class="c-breadcrumbs block">
 		<div slot="separator" class="material-symbols-outlined text-slate-400 text-xs">arrow_forward_ios</div>
 		<sl-breadcrumb-item v-for="breadcrumb in breadcrumbs" :key="breadcrumb.url" :href="breadcrumb.url" class="c-breadcrumb-item">{{ breadcrumb.label }}</sl-breadcrumb-item>
 	</sl-breadcrumb>

@@ -1,6 +1,6 @@
 <template>
-	<div class="c-package-card bg-white px-8 py-14 rounded-3xl border border-slate-300 relative overflow-hidden">
-		<div v-if="ribbonText" class="absolute top-0 left-0 w-full bg-blue py-2 flex items-center justify-center gap-2 rounted-t-3xl">
+	<div class="c-package-card bg-white px-8 py-14 rounded-3xl border border-slate-300 relative overflow-hidden h-full">
+		<div v-if="ribbonText" class="absolute top-0 left-0 w-full bg-blue py-2 flex items-center justify-center gap-2 rounted-t-3xl h-full">
 			<div v-if="ribbonIcon" class="material-symbols-outlined text-white">{{ ribbonIcon }}</div>
 			<div class="text-white text-sm font-light">{{ ribbonText }}</div>
 		</div>

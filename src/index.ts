@@ -7,7 +7,7 @@ interface ComponentModule {
 
 // Import all components dynamically
 const components: Record<string, ComponentModule> = import.meta.glob('./stories/**/*.vue', { eager: true }) as Record<string, ComponentModule>;
-
+console.log(components);
 // Function to register all components globally
 const prefix = 'Ds';
 export function registerComponents(app: App): void {

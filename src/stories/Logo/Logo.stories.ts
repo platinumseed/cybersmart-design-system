@@ -21,3 +21,9 @@ export const Default: Story = {
 
 	},
 };
+
+export const Light: Story = {
+	args: {
+		style: 'light'
+	},
+};

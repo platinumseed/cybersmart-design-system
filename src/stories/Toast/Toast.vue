@@ -1,7 +1,7 @@
 <template>
 	<sl-alert class="c-alert" open :variant="variant" closable ref="alert" @show="showToast">
 		<div class="flex gap-4">
-			<div :class="['material-symbols-outlined w-6 h-6 text-white rounded-full text-xl leading-[24px] text-center mt-[5px]', iconClasses]">
+			<div :class="['material-symbols-outlined w-6 h-6 text-white rounded-full text-xl leading-[24px] text-center mt-[5px] shrink-0', iconClasses]">
 				{{ icon }}
 			</div>
 			<div>

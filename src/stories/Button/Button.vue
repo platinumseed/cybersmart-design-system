@@ -3,7 +3,7 @@
 		:is="el"
 		:href="href"
 		:target="target"
-		type="button" 
+		:type="buttonType" 
 		class="
 			group
 			inline-flex 

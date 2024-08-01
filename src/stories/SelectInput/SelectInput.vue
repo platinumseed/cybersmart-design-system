@@ -72,7 +72,7 @@ const comboboxBorderColor = computed(() => {
 });
 
 const comboboxBackgroundColor = computed(() => {
-	return props.valid ? '#F8FAFC' : 'transparent'
+	return props.valid ? '#F8FAFC' : '#FFFFFF'
 });
 
 const labelClass = computed(() => {

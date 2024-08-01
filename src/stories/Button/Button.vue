@@ -29,7 +29,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 
-const props = withDefaults(defineProps<{
+interface Props {
 	/**
 	 * The label of the button
 	 */
@@ -58,12 +58,17 @@ const props = withDefaults(defineProps<{
  	* Link target
 	*/
 	target?: '_blank' | '_self' | '_parent' | '_top'
-	 
+	/**
+ 	* Button type
+	*/
+	buttonType?: 'button' | 'submit' | 'reset'
+}
 
-}>(), {
+const props = withDefaults(defineProps<Props>(), {
 	type: 'primary',
 	disabled: false,
-	target: '_self'
+	target: '_self',
+	buttonType: 'button'
 });
 
 const emit = defineEmits<{

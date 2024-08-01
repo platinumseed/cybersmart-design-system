@@ -1,25 +1,27 @@
 <template>
-	<sl-select 
-		v-bind="$attrs" 
-		class="c-select" 
-		:placeholder="placeholder"
-		ref="singleSelect"
-		@sl-show="focus = true"
-		@sl-hide="focus = false" 
-		@sl-change="updateValue"
-	>
-		<span 
-			slot="label" 
-			:class="labelClass" 
-			v-if="label"
-		>{{ label }}</span>
-		<sl-option v-for="option in options" :key="option.value" class="c-select-option" :value="option.value">
-			<div v-if="option.icon" slot="prefix" class="text-6 material-symbols-outlined">{{ option.icon }}</div>
-			{{ option.label }}
-		</sl-option>
-		<div slot="expand-icon" class="text-6 material-symbols-outlined">keyboard_arrow_down</div>
-	</sl-select>
-	<small v-if="invalid" class="block mt-1 text-red-600 text-xs ">{{ invalidMessage }}</small>
+	<div class="c-select-input">
+		<sl-select
+			v-bind="$attrs"
+			class="c-select"
+			:placeholder="placeholder"
+			ref="singleSelect"
+			@sl-show="focus = true"
+			@sl-hide="focus = false"
+			@sl-change="updateValue"
+		>
+			<span
+				slot="label"
+				:class="labelClass"
+				v-if="label"
+			>{{ label }}</span>
+			<sl-option v-for="option in options" :key="option.value" class="c-select-option" :value="option.value">
+				<div v-if="option.icon" slot="prefix" class="text-6 material-symbols-outlined">{{ option.icon }}</div>
+				{{ option.label }}
+			</sl-option>
+			<div slot="expand-icon" class="text-6 material-symbols-outlined">keyboard_arrow_down</div>
+		</sl-select>
+		<small v-if="invalid" class="block mt-1 text-red-600 text-xs ">{{ invalidMessage }}</small>
+	</div>
 </template>
 
 <script lang="ts" setup>

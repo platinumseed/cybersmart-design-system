@@ -1,6 +1,6 @@
 <!-- TextInput.vue -->
 <template>
-	<div class="">
+	<div class="c-text-input">
 		<div class="relative">
 			<label :class="[labelClass, 'text-xs absolute top-2 transition-all']" v-if="label" :for="name">{{ label }}</label>
 			<span v-if="icon && type !== 'password'" class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined" aria-hidden="true">{{ icon }}</span>
@@ -31,12 +31,12 @@
 			<div class="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2">
 				<span v-if="type === 'date'" :class="valid ? 'bg-slate-50' : 'bg-white'" class="block p-1 text-stone-800 material-symbols-outlined">calendar_month</span>
 				<span v-if="valid" :class="valid ? 'bg-slate-50' : 'bg-white'" class="block p-1 text-slate-400 material-symbols-outlined">check_circle</span>
-				<span v-if="invalid" :class="valid ? 'bg-slate-50' : 'bg-white'" class="block p-1 text-red-600 material-symbols-outlined">report</span>
+				<span v-if="invalid && !valid" :class="valid ? 'bg-slate-50' : 'bg-white'" class="block p-1 text-red-600 material-symbols-outlined">report</span>
 				<span v-if="type === 'password' && !unhidePassword" @click="togglePasswordVisibility" :class="valid ? 'bg-slate-50' : 'bg-white'" class="block p-1 text-stone-800 material-symbols-outlined cursor-pointer">visibility_off</span>
 				<span v-if="type === 'password' && unhidePassword" @click="togglePasswordVisibility" :class="valid ? 'bg-slate-50' : 'bg-white'" class="block p-1 text-stone-800 material-symbols-outlined cursor-pointer">visibility</span>
 			</div>
 		</div>
-		<small v-if="invalid" class="block mt-1 text-red-600 text-xs">{{ invalidMessage }}</small>
+		<small v-if="invalid && !valid" class="block mt-1 text-red-600 text-xs">{{ invalidMessage }}</small>
 		<small class="block mt-1 text-slate-400 text-xs" v-if="note">{{ note }}</small>
 	</div>
 </template>
@@ -96,7 +96,7 @@ const labelClass = computed(() => ({
 	'left-14': props.icon || props.type === 'password',
 	'text-sky-500' : focus.value && !props.invalid,
 	'text-stone-800': !focus.value && !props.invalid,
-	'text-red-600': props.invalid
+	'text-red-600': props.invalid && !props.valid
 }))
 
 const inputType = computed(() => {

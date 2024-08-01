@@ -28,7 +28,7 @@
 				@input="updateValue" 
 				:placeholder="placeholder" 
 			/>
-			<div class="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2">
+			<div class="absolute right-4 top-1/2 flex items-center gap-2">
 				<span v-if="type === 'date'" :class="valid ? 'bg-slate-50' : 'bg-white'" class="block p-1 text-stone-800 material-symbols-outlined">calendar_month</span>
 				<span v-if="valid" :class="valid ? 'bg-slate-50' : 'bg-white'" class="block p-1 text-slate-400 material-symbols-outlined">check_circle</span>
 				<span v-if="invalid && !valid" :class="valid ? 'bg-slate-50' : 'bg-white'" class="block p-1 text-red-600 material-symbols-outlined">report</span>

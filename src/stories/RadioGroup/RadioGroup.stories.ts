@@ -12,7 +12,8 @@ const meta: Meta<typeof RadioGroup> = {
 			{ label: 'Option 1', value: 'value-1' },
 			{ label: 'Option 2', value: 'value-2' },
 			{ label: 'Option 3', value: 'value-3' },
-		]
+		],
+		name: 'name'
 	},
 	argTypes: {
 		layout: { control: 'select', options: ['inline', 'stacked'] },
@@ -28,10 +29,11 @@ export const Default: Story = {
 		components: { RadioGroup },
 		setup() {
 			const value = ref("value-1");
-			return { args, value };
+			const valueChanged = (value: string) => console.log(value);
+			return { args, value, valueChanged };
 		},
 		template: `
-			<RadioGroup v-bind="args" v-model="value"></RadioGroup>	
+			<RadioGroup v-bind="args" v-model="value" @change="valueChanged"></RadioGroup>	
 		`,
 	}),
 	args: {}

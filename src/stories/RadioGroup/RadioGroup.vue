@@ -1,5 +1,5 @@
 <template>
-	<sl-radio-group :class="['c-radio-group', groupStyle]" :name="name" :value="modelValue" @sl-input="change">
+	<sl-radio-group :class="['c-radio-group', groupStyle]" :name="name" :value="modelValue" @sl-input="change" @sl-change="emitChange">
 		<sl-radio v-for="option in options" :key="option.value" class="c-radio" :value="option.value">{{ option.label }}</sl-radio>
 	</sl-radio-group>
 </template>
@@ -26,13 +26,18 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 // Define emits to emit the update:modelValue event
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue', 'change'])
 
 // Handle the change event and emit the new value
 const change = (event: Event) => {
 	const target = event.target as HTMLInputElement;
 	emit('update:modelValue', target.value)
 };
+
+const emitChange = (event: Event) => {
+	const target = event.target as HTMLInputElement;
+	emit('change', target.value)
+}
 
 const groupStyle = computed(() => {
 	return {

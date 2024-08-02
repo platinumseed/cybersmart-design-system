@@ -25,6 +25,7 @@ import LinkCard from './stories/LinkCard/LinkCard.vue';
 import TestimonialCard from './stories/TestimonialCard/TestimonialCard.vue';
 import PackageCard from './stories/PackageCard/PackageCard.vue';
 import IconBlock from './stories/IconBlock/IconBlock.vue';
+import RadioGroup from './stories/RadioGroup/RadioGroup.vue';
 // Add other component imports as needed...
 
 // Function to register all components globally
@@ -55,6 +56,7 @@ export function registerComponents(app: App): void {
   app.component(`${prefix}TestimonialCard`, TestimonialCard);
   app.component(`${prefix}PackageCard`, PackageCard);
   app.component(`${prefix}IconBlock`, IconBlock);
+  app.component(`${prefix}RadioGroup`, RadioGroup);
   // Register other components...
 }
 

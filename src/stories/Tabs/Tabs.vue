@@ -38,16 +38,8 @@ const tabClasses = computed(() => ({
 
 const slots = useSlots();
 let tabsTitles: Tab[] = [];
+console.log(slots.default())
 
-if (slots.default) {
-	console.log(slots.default())
-	tabsTitles = slots.default().map((tab: any) => {
-		return {
-			label: tab.props.label,
-			name: tab.props.name
-		};
-	});
-}
 
 </script>
 

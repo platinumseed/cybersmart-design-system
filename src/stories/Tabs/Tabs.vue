@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, useSlots } from 'vue'
+import { computed, useSlots, Fragment } from 'vue'
 import Tab from './Tab.vue'
 import '@shoelace-style/shoelace/dist/components/tab-group/tab-group.js'
 import '@shoelace-style/shoelace/dist/components/tab/tab.js'
@@ -38,8 +38,26 @@ const tabClasses = computed(() => ({
 
 const slots = useSlots();
 let tabsTitles: Tab[] = [];
-console.log(slots.default())
 
+if (slots.default) {
+	const slotContent = slots.default();
+	slotContent.forEach((tab: any) => {
+		if (tab.type === Fragment) {
+			tab.children.forEach((child: any) => {
+				tabsTitles.push({
+					label: child.props.label,
+					name: child.props.name
+				})
+			})
+		}
+		else {
+			tabsTitles.push({
+				label: tab.props.label,
+				name: tab.props.name
+			})
+		}
+	});
+}
 
 </script>
 

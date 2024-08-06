@@ -6,7 +6,7 @@ const meta: Meta<typeof Tabs> = {
 	title: 'UI Components/Tabs',
 	component: Tabs,
 	args: {
-		type: 'underline'
+		type: 'underline',
 	},
 	argTypes: {
 
@@ -24,21 +24,18 @@ export const Underline: Story = {
 	render: (args) => ({
 		components: { Tabs, Tab },
 		setup() {
-			return { args };
+			const tabs = [
+				{name: 'tab-1', label: 'Tab 1'},
+				{name: 'tab-2', label: 'Tab 2'},
+				{name: 'tab-3', label: 'Tab 3'},
+				{name: 'tab-4', label: 'Tab 4', disabled: true},
+			]
+			return { tabs, args };
 		},
 		template: `
 			<Tabs v-bind="args">
-				<Tab label="Tab 1" name="tab-1">
-					<h3>Tab 1</h3>
-				</Tab>
-				<Tab label="Tab 2" name="tab-2">
-					<h3>Tab 2</h3>
-				</Tab>
-				<Tab label="Tab 3" name="tab-3">
-					<h3>Tab 3</h3>
-				</Tab>
-				<Tab label="Tab 4" name="tab-4">
-					<h3>Tab 4</h3>
+				<Tab v-for="tab in tabs" :key="tab.name" :label="tab.label" :name="tab.name">
+					<h3>{{tab.label}} content</h3>
 				</Tab>
 			</Tabs>
 		`,

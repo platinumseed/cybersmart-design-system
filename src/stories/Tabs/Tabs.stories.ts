@@ -1,17 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/vue3';
 import Tabs from './Tabs.vue';
+import Tab from './Tab.vue';
 
 const meta: Meta<typeof Tabs> = {
 	title: 'UI Components/Tabs',
 	component: Tabs,
 	args: {
-		type: 'underline',
-		tabs: [
-			{name: 'tab-1', label: 'Tab 1', content: 'This is tab 1 content.'},
-			{name: 'tab-2', label: 'Tab 2', content: 'This is tab 2 content.'},
-			{name: 'tab-3', label: 'Tab 3', content: 'This is tab 3 content.'},
-			{name: 'tab-4', label: 'Tab 4', content: 'This is tab 4 content.', disabled: true},
-		]
+		type: 'underline'
 	},
 	argTypes: {
 
@@ -26,10 +21,54 @@ export const Underline: Story = {
 	args: {
 		type: 'underline',
 	},
+	render: (args) => ({
+		components: { Tabs, Tab },
+		setup() {
+			return { args };
+		},
+		template: `
+			<Tabs v-bind="args">
+				<Tab label="Tab 1" name="tab-1">
+					<h3>Tab 1</h3>
+				</Tab>
+				<Tab label="Tab 2" name="tab-2">
+					<h3>Tab 2</h3>
+				</Tab>
+				<Tab label="Tab 3" name="tab-3">
+					<h3>Tab 3</h3>
+				</Tab>
+				<Tab label="Tab 4" name="tab-4">
+					<h3>Tab 4</h3>
+				</Tab>
+			</Tabs>
+		`,
+	}),
 };
 
 export const Filled: Story = {
 	args: {
 		type: 'filled',
 	},
+	render: (args) => ({
+		components: { Tabs, Tab },
+		setup() {
+			return { args };
+		},
+		template: `
+			<Tabs v-bind="args">
+				<Tab label="Tab 1" name="tab-1">
+					<h3>Tab 1</h3>
+				</Tab>
+				<Tab label="Tab 2" name="tab-2">
+					<h3>Tab 2</h3>
+				</Tab>
+				<Tab label="Tab 3" name="tab-3">
+					<h3>Tab 3</h3>
+				</Tab>
+				<Tab label="Tab 4" name="tab-4">
+					<h3>Tab 4</h3>
+				</Tab>
+			</Tabs>
+		`,
+	}),
 };

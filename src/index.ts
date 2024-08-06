@@ -1,6 +1,7 @@
 import { App } from 'vue';
 // Import all components
 import Tabs from './stories/Tabs/Tabs.vue';
+import Tab from './stories/Tabs/Tab.vue';
 import StatusMessage from './stories/StatusMessage/StatusMessage.vue';
 import Carousel from './stories/Carousel/Carousel.vue';
 import Breadcrumbs from './stories/Breadcrumbs/Breadcrumbs.vue';
@@ -32,6 +33,7 @@ import RadioGroup from './stories/RadioGroup/RadioGroup.vue';
 const prefix = 'Ds';
 export function registerComponents(app: App): void {
   app.component(`${prefix}Tabs`, Tabs);
+  app.component(`${prefix}Tab`, Tab);
   app.component(`${prefix}StatusMessage`, StatusMessage);
   app.component(`${prefix}Carousel`, Carousel);
   app.component(`${prefix}Breadcrumbs`, Breadcrumbs);

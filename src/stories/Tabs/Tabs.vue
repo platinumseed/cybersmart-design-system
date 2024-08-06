@@ -40,6 +40,7 @@ const slots = useSlots();
 let tabsTitles: Tab[] = [];
 
 if (slots.default) {
+	console.log(slots.default())
 	tabsTitles = slots.default().map((tab: any) => {
 		return {
 			label: tab.props.label,
@@ -48,7 +49,6 @@ if (slots.default) {
 	});
 }
 
-console.log(tabsTitles)
 </script>
 
 <style scoped>

@@ -9,11 +9,21 @@
 			<p v-if="description" class="text-lg lg:text-lg 2xl:text-base text-slate-500 font-light mt-4">{{ description }}</p>
 			<div class="text-lg lg:text-lg 2xl:text-base text-digital-black font-semibold mt-6">{{ cost }}</div>
 			<Button v-if="ctaLabel" type="outline" :label="ctaLabel" :href="ctaUrl" class="mt-10" />
-		</div>
+			<div v-if="$slots.moreInfo" class="flex flex-col gap-4 mt-2">
+				<Button 
+					:label="toggleMoreText"
+					type="ghost"
+					:icon-after="toggleMoreIcon"
+					@click="showMoreInfo = !showMoreInfo"
+				/>
+				<slot v-if="showMoreInfo" name="moreInfo"></slot>
+			</div>
+		</div>	
 	</div>
 </template>
 
 <script lang="ts" setup>
+import { ref, computed } from 'vue';
 import Button from '../Button/Button.vue';
 
 interface Props {
@@ -27,5 +37,10 @@ interface Props {
 }
 
 defineProps<Props>()
+
+const showMoreInfo = ref<boolean>(false)
+
+const toggleMoreText = computed(() => showMoreInfo.value ? 'less info' : 'more Info')
+const toggleMoreIcon = computed(() => showMoreInfo.value ? 'keyboard_arrow_up' : 'keyboard_arrow_down')
 
 </script>

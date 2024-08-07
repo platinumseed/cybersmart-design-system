@@ -42,6 +42,7 @@ const emitChange = (event: Event) => {
 const groupStyle = computed(() => {
 	return {
 		'--inline': props.layout == 'inline',
+		'--stacked': props.layout == 'stacked',
 	}
 })
 </script>
@@ -63,5 +64,9 @@ const groupStyle = computed(() => {
 
 .c-radio-group.--inline::part(form-control-input) {
 	@apply flex items-center gap-12
+}
+
+.c-radio-group.--stacked::part(form-control-input) {
+	@apply flex flex-col gap-6
 }
 </style>

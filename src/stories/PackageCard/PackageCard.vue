@@ -13,7 +13,7 @@
 				type="outline" 
 				:label="ctaLabel" 
 				:href="ctaUrl" 
-				class="mt-10" 
+				class="mt-10 w-full" 
 				@click="handleClick($event)"
 			/>
 			<div v-if="$slots.moreInfo" class="flex flex-col gap-4 mt-2">

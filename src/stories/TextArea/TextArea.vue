@@ -46,7 +46,7 @@ interface Props {
 	valid?: boolean;
 	invalidMessage?: string;
 	placeholder?: string;
-	modelValue: string | number;
+	modelValue?: string | number;
 }
 
 const props = withDefaults(defineProps<Props>(), {

@@ -1,5 +1,5 @@
 <template>
-	<div class="c-package-card bg-white px-8 py-14 rounded-3xl border border-slate-300 relative overflow-hidden h-full">
+	<div class="c-package-card bg-white px-8 py-14 rounded-3xl border relative overflow-hidden h-full" :class="cardClasses">
 		<div v-if="ribbonText" class="absolute top-0 left-0 w-full bg-blue py-2 flex items-center justify-center gap-2 rounted-t-3xl">
 			<div v-if="ribbonIcon" class="material-symbols-outlined text-white">{{ ribbonIcon }}</div>
 			<div class="text-white text-sm font-light">{{ ribbonText }}</div>
@@ -41,14 +41,20 @@ interface Props {
 	ctaUrl?: string
 	ribbonText?: string
 	ribbonIcon?: string
+	active?: boolean
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+	active: false
+});
 
 const showMoreInfo = ref<boolean>(false)
 
 const toggleMoreText = computed(() => showMoreInfo.value ? 'less info' : 'more Info')
 const toggleMoreIcon = computed(() => showMoreInfo.value ? 'keyboard_arrow_up' : 'keyboard_arrow_down')
+const cardClasses = computed(() => {
+	return props.active ? 'border-blue' : 'border-slate-300'
+})
 
 const emit = defineEmits(['buttonClicked'])
 

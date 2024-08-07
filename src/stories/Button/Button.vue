@@ -72,7 +72,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-	(e: 'click', id: number): void;
+	(e: 'click', event: Event): void;
 }>();
 
 const hasText = computed(() => {
@@ -98,8 +98,8 @@ const textClasses = computed(() => ({
 
 const el = computed(() => props.href ? 'a' : 'button');
 
-const onClick = () => {
-	emit("click", 1)
+const onClick = (event: Event) => {
+	emit("click", event)
 };
 
 </script>

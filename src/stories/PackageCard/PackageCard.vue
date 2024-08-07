@@ -8,7 +8,14 @@
 			<div class="text-3xl lg:text-4xl 2xl:text-5xl text-blue font-semibold">{{ title }}</div>
 			<p v-if="description" class="text-lg lg:text-lg 2xl:text-base text-slate-500 font-light mt-4">{{ description }}</p>
 			<div class="text-lg lg:text-lg 2xl:text-base text-digital-black font-semibold mt-6">{{ cost }}</div>
-			<Button v-if="ctaLabel" type="outline" :label="ctaLabel" :href="ctaUrl" class="mt-10" />
+			<Button 
+				v-if="ctaLabel" 
+				type="outline" 
+				:label="ctaLabel" 
+				:href="ctaUrl" 
+				class="mt-10" 
+				@click="handleClick($event)"
+			/>
 			<div v-if="$slots.moreInfo" class="flex flex-col gap-4 mt-2">
 				<Button 
 					:label="toggleMoreText"
@@ -23,7 +30,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
+import { ref, computed, defineEmits } from 'vue';
 import Button from '../Button/Button.vue';
 
 interface Props {
@@ -36,11 +43,19 @@ interface Props {
 	ribbonIcon?: string
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
 
 const showMoreInfo = ref<boolean>(false)
 
 const toggleMoreText = computed(() => showMoreInfo.value ? 'less info' : 'more Info')
 const toggleMoreIcon = computed(() => showMoreInfo.value ? 'keyboard_arrow_up' : 'keyboard_arrow_down')
 
+const emit = defineEmits(['buttonClicked'])
+
+function handleClick(event: Event) {
+	if (!props.ctaUrl || props.ctaUrl === '#') {
+		event.preventDefault()
+	}
+  	emit('buttonClicked')
+}
 </script>

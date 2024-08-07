@@ -10,7 +10,7 @@ const meta: Meta<typeof PackageCard> = {
 		description: 'Uncapped Vumatel Business Fibre',
 		cost: 'R000.000 per month',
 		ctaLabel: 'Get this',
-		ctaUrl: 'https://www.google.com',
+		ctaUrl: '#',
 	},
 	argTypes: {},
 	tags: ['autodocs'],
@@ -51,10 +51,13 @@ export const MoreInfo: Story = {
 	render: (args) => ({
 		components: { PackageCard },
 		setup() {
-			return { args };
+			const handleButtonClick = () => {
+				console.log('button clicked');
+			}
+			return { args, handleButtonClick };
 		},
 		template: `
-			<PackageCard v-bind="args">
+			<PackageCard v-bind="args" @buttonClicked="handleButtonClick">
 				<template v-slot:moreInfo>
 					<div class="text-lg lg:text-lg 2xl:text-base text-slate-500 font-light">50Mbps download 50Mbps upload Symmetrical speed Month to Month service Fibre router provided with Wi-Fi 6 Stream 2 movies at the same time</div>
 				</template>

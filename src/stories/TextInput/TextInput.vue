@@ -21,7 +21,7 @@
 				:type="inputType" 
 				:name="name" 
 				:id="name" 
-				:value="internalValue"
+				:value="computedValue"
 				@focus="onFocus"
         		@blur="onBlur"
 				@input="updateValue" 
@@ -53,13 +53,14 @@ interface Props {
 	valid?: boolean;
 	invalidMessage?: string;
 	placeholder?: string;
-	modelValue?: string | number;
+	modelValue?: string | number; 
 }
 
 const props = withDefaults(defineProps<Props>(), {
 	invalid: false,
 	valid: false,
 	invalidMessage: 'Invalid input',
+	modelValue: '', 
 });
 
 const emit = defineEmits<{
@@ -68,20 +69,25 @@ const emit = defineEmits<{
   (e: 'blur', event: FocusEvent): void;
 }>();
 
-const { modelValue } = toRefs(props);
+// const { modelValue } = toRefs(props);
 
-let focus = ref(false);
+const focus = ref(false);
 
-let unhidePassword = ref(false);
+const unhidePassword = ref(false);
 
-const internalValue = computed({
-	get: () => modelValue.value,
-	set: (value: string | number) => emit('update:modelValue', value)
+const internalValue = ref(props.modelValue);
+
+const computedValue = computed({
+    get: () => internalValue.value,
+    set: (value: string | number) => {
+        internalValue.value = value;
+        emit('update:modelValue', value);
+    }
 });
 
 const updateValue = (event: Event) => {
-	const target = event.target as HTMLInputElement;
-	internalValue.value = target.value;
+    const target = event.target as HTMLInputElement;
+    computedValue.value = target.value;
 };
 
 const inputClass = computed(() => ({

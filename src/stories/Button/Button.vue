@@ -20,9 +20,13 @@
 		@click="onClick" 
 		:disabled="disabled"
 	>
-		<span v-if="iconBefore" class="transition-all font-semibold text-base material-symbols-outlined" :class="textClasses">{{ iconBefore }}</span>
+		<slot name="iconBefore">
+			<span v-if="iconBefore" class="transition-all font-semibold text-base material-symbols-outlined" :class="textClasses">{{ iconBefore }}</span>
+		</slot>
 		<span v-if="hasText" class="transition-all font-semibold" :class="textClasses">{{ label }} </span>
-		<span v-if="iconAfter" class="transition-all font-semibold text-base material-symbols-outlined" :class="textClasses">{{ iconAfter }}</span>
+		<slot name="iconAfter">
+			<span v-if="iconAfter" class="transition-all font-semibold text-base material-symbols-outlined" :class="textClasses">{{ iconAfter }}</span>
+		</slot>
 	</component>
 </template>
 

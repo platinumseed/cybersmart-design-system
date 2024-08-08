@@ -59,7 +59,7 @@ export const MoreInfo: Story = {
 		template: `
 			<PackageCard v-bind="args" @buttonClicked="handleButtonClick">
 				<template v-slot:moreInfo>
-					<div class="text-lg lg:text-lg 2xl:text-base text-slate-500 font-light">50Mbps download 50Mbps upload Symmetrical speed Month to Month service Fibre router provided with Wi-Fi 6 Stream 2 movies at the same time</div>
+					<div class="text-lg lg:text-lg 2xl:text-base font-light">50Mbps download 50Mbps upload Symmetrical speed Month to Month service Fibre router provided with Wi-Fi 6 Stream 2 movies at the same time</div>
 				</template>
 			</PackageCard>
 		`,

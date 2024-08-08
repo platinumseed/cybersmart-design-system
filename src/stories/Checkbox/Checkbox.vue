@@ -12,7 +12,7 @@
 				role="checkbox" 
 				:aria-checked="ariaChecked" 
 			/>
-			{{ label }}
+			<span v-html="label"></span>
 		</label>
 		<small v-if="invalid" class="block mt-1 text-red-600 text-xs">{{ invalidMessage }}</small>
 		<span v-if="note" :id="noteId" class="text-slate-400 text-xs">{{ note }}</span>

@@ -15,3 +15,9 @@ interface Props {
 
 defineProps<Props>()
 </script>
+
+<style scoped>
+.c-tab-panel::part(base) {
+	@apply pt-6 pb-0
+}
+</style>

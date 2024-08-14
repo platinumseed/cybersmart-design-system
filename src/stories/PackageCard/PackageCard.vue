@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, defineEmits } from 'vue';
+import { ref, computed } from 'vue';
 import Button from '../Button/Button.vue';
 
 interface Props {

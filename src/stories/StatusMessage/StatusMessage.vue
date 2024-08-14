@@ -1,6 +1,6 @@
 <template>
 	<div :class="['c-status-message', statusMessageClass]">
-		<Badge @click="open = !open" :class="['flex items-center', badgeClass]" :type="type" :size="open ? 'small' : 'large'">
+		<Badge @click="open = !open" :class="['flex items-center cursor-pointer', badgeClass]" :type="type" :size="open ? 'small' : 'large'">
 			<span :class="['w-2 h-2 rounded-full shrink-0 me-3', iconColor]"></span>
 			<span class="text-base font-medium">{{ badgeContent }}</span>
 		</Badge>

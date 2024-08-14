@@ -24,10 +24,13 @@ export const Default: Story = {
 	render: (args) => ({
 		components: { PostCard },
 		setup() {
-			return { args };
+			const clicked = () => {
+				console.log('clicked')
+			}
+			return { args, clicked };
 		},
 		template: `
-			<PostCard v-bind="args"/>
+			<PostCard v-bind="args" @button-clicked="clicked"/>
 		`,
 	}),
 };

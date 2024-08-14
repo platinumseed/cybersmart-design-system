@@ -38,12 +38,12 @@
 			<Button
 				v-if="url"
 				type="primary"
-				v-on:click="()=>({})"
 				label=""
 				icon-before="south_east"
 				:href="url"
 				:target="target"
 				class="absolute bottom-10 right-10"
+				@click="handleClick($event)"
 			/>
 		</div>
 	</div>
@@ -59,7 +59,7 @@ interface Props {
 	target?: '_blank' | '_self' | '_parent' | '_top'
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
 	target: '_self'
 })
 
@@ -72,5 +72,14 @@ const featureColor = computed(() => {
 		return 'text-blue';
 	}
 })
+
+const emit = defineEmits(['buttonClicked'])
+
+function handleClick(event: Event) {
+	if (!props.url || props.url === '#') {
+		event.preventDefault()
+	}
+  	emit('buttonClicked')
+}
 
 </script>

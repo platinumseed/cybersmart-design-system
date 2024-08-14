@@ -42,11 +42,11 @@
 				<Button
 					v-if="url"
 					type="primary"
-					v-on:click="()=>({})"
 					label=""
 					icon-before="south_east"
 					:href="url"
 					class="shrink-0"
+					@click="handleClick($event)"
 				/>
 			</div>
 		</div>
@@ -152,7 +152,7 @@ interface Props {
 	tags?: string[]
 }
 
-withDefaults(defineProps<Props>(), {});
+const props = withDefaults(defineProps<Props>(), {});
 
 const hover = ref(false);
 
@@ -162,6 +162,15 @@ const isFlipped = ref(false);
 
 function flipCard() {
   isFlipped.value = !isFlipped.value;
+}
+
+const emit = defineEmits(['buttonClicked'])
+
+function handleClick(event: Event) {
+	if (!props.url || props.url === '#') {
+		event.preventDefault()
+	}
+  	emit('buttonClicked')
 }
 
 </script>

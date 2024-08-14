@@ -15,6 +15,7 @@
 						label=""
 						icon-before="north_east"
 						:href="url"
+						@click="handleClick($event)"
 					/>
 				</div>
 			</div>
@@ -32,8 +33,17 @@ interface Props {
 	title: string
 	excerpt: string
 	date: string
-	url: string
+	url?: string
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
+
+const emit = defineEmits(['buttonClicked'])
+
+function handleClick(event: Event) {
+	if (!props.url || props.url === '#') {
+		event.preventDefault()
+	}
+  	emit('buttonClicked')
+}
 </script>

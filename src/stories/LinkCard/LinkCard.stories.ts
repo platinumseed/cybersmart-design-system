@@ -6,7 +6,7 @@ const meta: Meta<typeof LinkCard> = {
 	title: 'Cards/LinkCard',
 	component: LinkCard,
 	args: {
-		url: 'https://www.google.com',
+		url: '#',
 		features: [
 			'Multiple-User Operations',
 			'POS Connectivity',
@@ -24,10 +24,13 @@ export const Default: Story = {
 	render: (args) => ({
 		components: { LinkCard },
 		setup() {
-			return { args };
+			const clicked = () => {
+				console.log('clicked')
+			}
+			return { args, clicked };
 		},
 		template: `
-			<LinkCard v-bind="args">
+			<LinkCard v-bind="args" @button-clicked="clicked">
 				<template #title>
 					<div class="text-5xl font-semibold">Title</div>
 				</template>

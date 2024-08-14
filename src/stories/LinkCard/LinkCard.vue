@@ -36,7 +36,6 @@
 				<FeatureList :feature-items="features" :iconColor="featureColor" :textColor="featureColor"  />
 			</div>
 			<Button
-				v-if="url"
 				type="primary"
 				label=""
 				icon-before="south_east"
@@ -55,7 +54,7 @@ import FeatureList from '../FeatureList/FeatureList.vue';
 import Button from '../Button/Button.vue';
 interface Props {
 	features: string[],
-	url?: string
+	url: string
 	target?: '_blank' | '_self' | '_parent' | '_top'
 }
 

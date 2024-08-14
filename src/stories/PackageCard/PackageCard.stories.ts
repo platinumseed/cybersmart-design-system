@@ -51,13 +51,13 @@ export const MoreInfo: Story = {
 	render: (args) => ({
 		components: { PackageCard },
 		setup() {
-			const handleButtonClick = () => {
-				console.log('button clicked');
+			const click = () => {
+				console.log('clicked');
 			}
-			return { args, handleButtonClick };
+			return { args, click };
 		},
 		template: `
-			<PackageCard v-bind="args" @buttonClicked="handleButtonClick">
+			<PackageCard v-bind="args" @button-clicked="click">
 				<template v-slot:moreInfo>
 					<div class="text-lg lg:text-lg 2xl:text-base font-light">50Mbps download 50Mbps upload Symmetrical speed Month to Month service Fibre router provided with Wi-Fi 6 Stream 2 movies at the same time</div>
 				</template>

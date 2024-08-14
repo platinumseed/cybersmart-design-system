@@ -12,6 +12,7 @@
 				:url="linkUrl"
 				icon-after="arrow_right_alt"
 				:class="'!p-0'"
+				@click="handleClick($event)"
 			/>
 		</div>
 	</div>
@@ -25,15 +26,24 @@ interface Props {
 	title: string
 	description: string
 	icon: string
-	iconStyle: 'boxed' | 'open' | null
+	iconStyle?: 'boxed' | 'open' | null
 	linkText?: string
 	linkUrl?: string
 	textAlign?: 'left' | 'center' | null
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
 	iconStyle: 'boxed',
 	textAlign: 'center',
 });
+
+const emit = defineEmits(['buttonClicked'])
+
+function handleClick(event: Event) {
+	if (props.linkText && (!props.linkUrl || props.linkUrl === '#')) {
+		event.preventDefault()
+	}
+  	emit('buttonClicked')
+}
 
 </script>

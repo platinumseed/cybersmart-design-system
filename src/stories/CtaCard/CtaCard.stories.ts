@@ -11,7 +11,7 @@ const meta: Meta<typeof CtaCard> = {
 			url: 'https://loremflickr.com/500/300/baby',
 			alt: 'image',
 		},
-		url: 'https://www.google.com',
+		url: '#',
 		tags: ['home office', 'fibre'],
 	},
 	argTypes: {},
@@ -25,10 +25,13 @@ export const Default: Story = {
 	render: (args) => ({
 		components: { CtaCard },
 		setup() {
-			return { args };
+			const click = () => {
+				console.log('clicked');
+			}
+			return { args, click };
 		},
 		template: `
-			<CtaCard v-bind="args">
+			<CtaCard v-bind="args" @button-clicked="click">
 				<template #description>
 					<div class="text-lg font-light">Connect your home with confidence when pairing your needs with Cybersmart’s fibre to the home options. </div>
 				</template>

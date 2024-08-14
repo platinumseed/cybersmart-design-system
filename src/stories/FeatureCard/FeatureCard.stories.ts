@@ -23,10 +23,13 @@ export const Default: Story = {
 	render: (args) => ({
 		components: { FeatureCard },
 		setup() {
-			return { args };
+			const click = () => {
+				console.log('clicked');
+			}
+			return { args, click };
 		},
 		template: `
-			<FeatureCard v-bind="args"></FeatureCard>	
+			<FeatureCard v-bind="args" @button-clicked="click"></FeatureCard>	
 		`,
 	}),
 };

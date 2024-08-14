@@ -1,5 +1,5 @@
 <template>
-	<sl-badge :class="['c-badge', badgeClass]"><slot></slot></sl-badge>
+	<sl-badge :class="['c-badge', badgeClass]"><slot /></sl-badge>
 </template>
 
 <script lang="ts" setup>
@@ -8,10 +8,12 @@ import '@shoelace-style/shoelace/dist/components/badge/badge.js';
 
 interface Props {
 	type: string
+	size?: 'small' | 'large'
 }
 
 const props = withDefaults(defineProps<Props>(), {
-	type: 'accent'
+	type: 'accent',
+	size: 'small',
 });
 
 const badgeClass = computed(() => ({
@@ -21,6 +23,7 @@ const badgeClass = computed(() => ({
 	'c-badge--success': props.type === 'success',
 	'c-badge--error': props.type === 'error',
 	'c-badge--white': props.type === 'white',
+	'c-badge--large': props.size === 'large',
 }))
 </script>
 
@@ -51,5 +54,9 @@ const badgeClass = computed(() => ({
 
 .c-badge--white::part(base) {
 	@apply text-white border-white bg-transparent
+}
+
+.c-badge--large::part(base) {
+	@apply py-3 px-4
 }
 </style>

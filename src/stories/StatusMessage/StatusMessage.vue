@@ -1,27 +1,31 @@
 <template>
 	<div :class="['c-status-message', statusMessageClass]">
-		<Badge class="flex items-center" :type="type">
+		<Badge @click="open = !open" :class="['flex items-center', badgeClass]" :type="type" :size="open ? 'small' : 'large'">
 			<span :class="['w-2 h-2 rounded-full shrink-0 me-3', iconColor]"></span>
-			<span>{{ badgeContent }}</span>
+			<span class="text-base font-medium">{{ badgeContent }}</span>
 		</Badge>
-		<div class="text-nowrap font-normal text-stone-800 text-base">
+		<div v-if="open" class="text-nowrap font-normal text-stone-800 text-base">
 			<marquee class="relative top-[3px]"><slot /></marquee>
 		</div>
 	</div>
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import Badge from '../Badge/Badge.vue';
 
 interface Props {
 	type: string
 	badgeContent: string
+	initiallyOpen?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
 	type: 'accent',
+	initiallyOpen: false
 });
+
+const open = ref<boolean>(props.initiallyOpen)
 
 const statusMessageClass = computed(() => ({
 	'c-status-message--accent': props.type === 'accent',
@@ -29,6 +33,11 @@ const statusMessageClass = computed(() => ({
 	'c-status-message--warning': props.type === 'warning',
 	'c-status-message--success': props.type === 'success',
 	'c-status-message--error': props.type === 'error',
+	'ps-1 py-1 border max-w-[375px]' : open.value
+}))
+
+const badgeClass = computed(() => ({
+	'py-1' : open.value
 }))
 
 const iconColor = computed(() => ({
@@ -42,7 +51,7 @@ const iconColor = computed(() => ({
 
 <style scoped>
 .c-status-message {
-	@apply font-normal text-base text-stone-800 bg-white border rounded-full inline-flex items-center max-w-[375px] gap-2 ps-1 py-1 transition-all
+	@apply font-normal text-base text-stone-800 bg-white rounded-full inline-flex items-center gap-2 transition-all
 }
 
 .c-status-message--accent {

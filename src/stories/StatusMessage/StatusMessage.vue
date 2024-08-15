@@ -1,12 +1,18 @@
 <template>
 	<div @click="open = !open" :class="['c-status-message cursor-pointer', statusMessageClass]">
-		<Badge :class="['flex items-center', badgeClass]" :type="type" :size="open ? 'small' : 'large'">
+		<Badge 
+			:class="['flex items-center badge-transition', badgeClass]" 
+			:type="type" 
+			:size="open ? 'small' : 'large'"
+		>
 			<span :class="['w-2 h-2 rounded-full shrink-0 me-3', iconColor]"></span>
 			<span class="text-base font-medium">{{ badgeContent }}</span>
 		</Badge>
-		<div v-if="open" class="text-nowrap font-normal text-stone-800 text-base">
-			<marquee class="relative top-[3px]"><slot /></marquee>
-		</div>
+		<transition name="fade">
+			<div v-if="open" class="text-nowrap font-normal text-stone-800 text-base">
+				<marquee class="relative top-[3px]"><slot /></marquee>
+			</div>
+		</transition>
 	</div>
 </template>
 
@@ -51,26 +57,51 @@ const iconColor = computed(() => ({
 
 <style scoped>
 .c-status-message {
-	@apply font-normal text-base text-stone-800 bg-white rounded-full inline-flex items-center gap-2 transition-all
+	@apply font-normal text-base text-stone-800 bg-white rounded-full inline-flex items-center gap-2 transition-all;
 }
 
 .c-status-message--accent {
-	@apply border-sky-500 
+	@apply border-sky-500;
 }
 
 .c-status-message--muted {
-	@apply border-slate-300
+	@apply border-slate-300;
 }
 
 .c-status-message--success {
-	@apply border border-green-600
+	@apply border border-green-600;
 }
 
 .c-status-message--warning {
-	@apply border-orange-600
+	@apply border-orange-600;
 }
 
 .c-status-message--error {
-	@apply border-red-600
+	@apply border-red-600;
+}
+
+/* New classes for dynamic width transition */
+.badge-transition {
+	transition: max-width 0.3s ease;
+	max-width: 100%; /* Transition to full content width */
+	overflow: hidden; /* Ensures the content doesn’t overflow during transition */
+	flex-shrink: 0;
+}
+
+.badge-small {
+	max-width: 50px; /* Start with a smaller max-width */
+}
+
+.badge-large {
+	max-width: 100%; /* Expand to the full width based on content */
+}
+
+/* Optional: add a fade transition for the additional content */
+.fade-enter-active, .fade-leave-active {
+	transition: opacity 0.3s;
+}
+
+.fade-enter-from, .fade-leave-to {
+	opacity: 0;
 }
 </style>

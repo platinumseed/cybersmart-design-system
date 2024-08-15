@@ -39,7 +39,7 @@ const statusMessageClass = computed(() => ({
 	'c-status-message--warning': props.type === 'warning',
 	'c-status-message--success': props.type === 'success',
 	'c-status-message--error': props.type === 'error',
-	'ps-1 py-1 border max-w-[375px]' : open.value
+	'ps-1 border max-w-[375px]' : open.value
 }))
 
 const badgeClass = computed(() => ({

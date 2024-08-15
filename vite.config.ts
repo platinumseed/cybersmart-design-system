@@ -7,7 +7,7 @@ export default defineConfig({
 		template: {
 			compilerOptions: {
 				// treat all tags with a dash as custom elements
-				isCustomElement: (tag) => tag.includes('sl-')
+				isCustomElement: (tag) => tag.includes('sl-') || tag == 'marquee',
 			}
 		}
 	})],

@@ -23,7 +23,7 @@ export const Default: Story = {
 		setup() {
 			return { args };
 		},
-		template: `<StatusMessage v-bind="args">This is a message of the network status</Badge>`,
+		template: `<StatusMessage v-bind="args">This is a message of the network status</StatusMessage>`,
 	}),
 	
 };

@@ -1,5 +1,5 @@
 <template>
-	<div @click="open = !open" :class="['c-status-message cursor-pointer', statusMessageClass]">
+	<div @click="open = !open" :class="['c-status-message cursor-pointer h-[50px]', statusMessageClass]">
 		<Badge 
 			:class="['flex items-center badge-transition', badgeClass]" 
 			:type="type" 

@@ -90,7 +90,7 @@ const buttonClasses = computed(() => ({
 	'bg-white border-navy hover:border-digital-black focus-visible:ring-[#144877]': props.type == 'outline',
 	'focus-visible:ring-sky-900': props.type == 'ghost',
 	'w-12 h-12 text-center flex flex-col justify-center' : !hasText.value,
-	'px-10 py-3' : hasText.value
+	'px-5 py-3' : hasText.value
 }));
 
 const textClasses = computed(() => ({

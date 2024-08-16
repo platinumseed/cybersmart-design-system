@@ -18,6 +18,7 @@
 			class="
 				flex 
 				flex-col 
+				justify-between
 				gap-9  
 				p-10
 				h-full
@@ -28,11 +29,13 @@
 				group-hover:bg-[url('../assets/logo-icon-bg.svg')]
 			"
 		>
-			<div class="text-blue group-hover:text-white transition-all text-5xl font-semibold">
-				{{ title }}
-			</div>
-			<div class="text-slate-500 group-hover:text-white transition-all">
-				<slot name="description" />
+			<div class="">
+				<div class="text-blue group-hover:text-white transition-all text-5xl font-semibold">
+					{{ title }}
+				</div>
+				<div class="text-slate-500 group-hover:text-white transition-all">
+					<slot name="description" />
+				</div>
 			</div>
 			<div class="flex gap-4 justify-between">
 				<div class="flex gap-3 flex-wrap">

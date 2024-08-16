@@ -20,6 +20,7 @@
 				flex-col 
 				gap-9  
 				p-10
+				h-full
 				group-hover:bg-blue
 				transition-all
 				bg-right-bottom

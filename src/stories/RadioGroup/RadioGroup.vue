@@ -16,7 +16,7 @@ interface RadioOption {
 
 // Define props to accept modelValue for v-model binding
 interface Props {
-	modelValue: string
+	modelValue: string | null
 	name: string
 	options: RadioOption[]
 	layout?: 'inline' | 'stacked'

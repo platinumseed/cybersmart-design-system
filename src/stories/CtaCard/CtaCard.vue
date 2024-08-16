@@ -29,11 +29,11 @@
 				group-hover:bg-[url('../assets/logo-icon-bg.svg')]
 			"
 		>
-			<div class="">
+			<div class="flex flex-col gap-9">
 				<div class="text-blue group-hover:text-white transition-all text-5xl font-semibold">
 					{{ title }}
 				</div>
-				<div class="text-slate-500 group-hover:text-white transition-all">
+				<div v-if="$slots.description" class="text-slate-500 group-hover:text-white transition-all">
 					<slot name="description" />
 				</div>
 			</div>

@@ -6,7 +6,7 @@
 			:size="open ? 'small' : 'large'"
 		>
 			<span :class="['w-2 h-2 rounded-full shrink-0 me-3', iconColor]"></span>
-			<span class="text-base font-medium">{{ badgeContent }}</span>
+			<span :class="['text-base font-medium']">{{ badgeContent }}</span>
 		</Badge>
 		<transition name="fade">
 			<div v-if="open" class="text-nowrap font-normal text-stone-800 text-base">
@@ -39,7 +39,7 @@ const statusMessageClass = computed(() => ({
 	'c-status-message--warning': props.type === 'warning',
 	'c-status-message--success': props.type === 'success',
 	'c-status-message--error': props.type === 'error',
-	'ps-1 border max-w-[375px]' : open.value
+	'ps-2 border max-w-[375px]' : open.value
 }))
 
 const badgeClass = computed(() => ({
@@ -69,7 +69,7 @@ const iconColor = computed(() => ({
 }
 
 .c-status-message--success {
-	@apply border-green-600;
+	@apply border-green-600 text-green-600;
 }
 
 .c-status-message--warning {

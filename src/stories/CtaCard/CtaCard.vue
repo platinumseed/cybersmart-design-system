@@ -40,7 +40,7 @@
 			<div class="flex gap-4 justify-between">
 				<div class="flex gap-3 flex-wrap">
 					<template v-if="tags">
-						<Badge v-for="tag in tags" :key="tag" :type="badgeType">{{ tag }}</Badge>
+						<Badge v-for="tag in tags" :key="tag" size="small" :type="badgeType">{{ tag }}</Badge>
 					</template>
 				</div>
 				<Button

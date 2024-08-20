@@ -29,7 +29,7 @@ const badgeClass = computed(() => ({
 
 <style scoped>
 .c-badge::part(base) {
-	@apply font-normal text-base border rounded-full flex gap-1 px-4 py-[7px] tracking-wide uppercase transition-all hover:shadow-[0px_1px_3px_0px_rgba(0,_0,_0,_0.10),_0px_1px_2px_0px_rgba(0,_0,_0,_0.06)]
+	@apply font-normal text-base border rounded-full flex gap-1 px-4 pb-[2px] pt-1 leading-normal uppercase transition-all hover:shadow-[0px_1px_3px_0px_rgba(0,_0,_0,_0.10),_0px_1px_2px_0px_rgba(0,_0,_0,_0.06)]
 }
 
 .c-badge--accent::part(base) {
@@ -41,15 +41,15 @@ const badgeClass = computed(() => ({
 }
 
 .c-badge--success::part(base) {
-	@apply text-green-500 border border-green-600 bg-white
+	@apply text-green-600 border border-green-600 bg-white
 }
 
 .c-badge--warning::part(base) {
-	@apply text-orange-500 border-orange-600 bg-white
+	@apply text-orange-600 border-orange-600 bg-white
 }
 
 .c-badge--error::part(base) {
-	@apply text-red-500 border-red-600 bg-white
+	@apply text-red-600 border-red-600 bg-white
 }
 
 .c-badge--white::part(base) {

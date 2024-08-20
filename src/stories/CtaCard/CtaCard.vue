@@ -30,7 +30,7 @@
 			"
 		>
 			<div class="flex flex-col gap-9">
-				<div class="text-blue group-hover:text-white transition-all text-5xl font-semibold" v-html="title"></div>
+				<div class="text-blue group-hover:text-white transition-all text-5xl font-semibold hyphens-none" v-html="title"></div>
 				<div v-if="$slots.description" class="text-slate-500 group-hover:text-white transition-all">
 					<slot name="description" />
 				</div>

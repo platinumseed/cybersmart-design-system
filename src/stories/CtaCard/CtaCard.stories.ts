@@ -6,7 +6,7 @@ const meta: Meta<typeof CtaCard> = {
 	title: 'Cards/CtaCard',
 	component: CtaCard,
 	args: {
-		title: 'Business Fibre Solutions',
+		title: 'Business Fibre&shy;Solutions',
 		image: {
 			url: 'https://loremflickr.com/500/300/baby',
 			alt: 'image',

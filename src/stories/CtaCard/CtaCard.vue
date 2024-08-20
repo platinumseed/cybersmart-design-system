@@ -81,7 +81,7 @@
 							transition-all
 						"
 					>
-						<div class="text-blue text-5xl font-semibold hyphens-auto" v-html="title"></div>	
+						<div class="text-blue text-5xl font-semibold max-md:hyphens-manual" v-html="title"></div>	
 						<div class="flex gap-4 justify-end">
 							<Button
 								v-if="url"
@@ -146,7 +146,7 @@
 							transition-all
 						"
 					>
-						<div class="text-blue text-5xl font-semibold hyphens-auto" v-html="title"></div>	
+						<div class="text-blue text-5xl font-semibold max-md:hyphens-manual" v-html="title"></div>	
 						<div class="flex gap-4 justify-end">
 							<Button
 								v-if="url"

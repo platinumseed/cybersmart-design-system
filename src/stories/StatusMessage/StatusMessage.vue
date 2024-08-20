@@ -69,7 +69,7 @@ const iconColor = computed(() => ({
 }
 
 .c-status-message--success {
-	@apply border border-green-600;
+	@apply border-green-600;
 }
 
 .c-status-message--warning {

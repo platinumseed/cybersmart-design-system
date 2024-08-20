@@ -29,7 +29,7 @@ const badgeClass = computed(() => ({
 
 <style scoped>
 .c-badge::part(base) {
-	@apply font-normal text-base border rounded-full flex gap-1 px-4 pb-[2px] pt-1 leading-normal uppercase transition-all hover:shadow-[0px_1px_3px_0px_rgba(0,_0,_0,_0.10),_0px_1px_2px_0px_rgba(0,_0,_0,_0.06)]
+	@apply font-normal text-base border rounded-full flex gap-1 px-3 pb-[2px] pt-1 leading-normal uppercase transition-all hover:shadow-[0px_1px_3px_0px_rgba(0,_0,_0,_0.10),_0px_1px_2px_0px_rgba(0,_0,_0,_0.06)]
 }
 
 .c-badge--accent::part(base) {

@@ -1,6 +1,6 @@
 <template>
 	<sl-details class="c-accordion" :summary="label" :open="open">
-		<div class="material-symbols-outlined text-sky-500 -rotate-90" slot="collapse-icon">keyboard_arrow_up</div>
+		<div class="material-symbols-outlined text-sky-500 rotate-0" slot="collapse-icon">keyboard_arrow_up</div>
 		<div class="material-symbols-outlined text-slate-400" slot="expand-icon">keyboard_arrow_down</div>
 		<div class="text-slate-500 text-lg font-light"><slot /></div>
 	</sl-details>

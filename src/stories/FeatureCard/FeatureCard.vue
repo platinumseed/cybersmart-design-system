@@ -1,8 +1,8 @@
 <template>
 	<div class="flex flex-col gap-6" :class="{'items-center': textAlign === 'center' }">
 		<IconBlock v-if="iconStyle === 'boxed'" :icon="icon" />
-		<div v-else class="material-symbols-outlined text-blue">{{ icon }}</div>
-		<div class="text-xl lg:text-2xl 2xl:text-2xl text-primary" :class="{'text-center': textAlign === 'center' }">{{ title }}</div>
+		<div v-else class="material-symbols-outlined text-blue text-[32px]">{{ icon }}</div>
+		<div class="text-xl lg:text-2xl 2xl:text-2xl text-primary font-medium" :class="{'text-center': textAlign === 'center' }">{{ title }}</div>
 		<p class="text-secondary" :class="{'text-center': textAlign === 'center' }">{{ description }}</p>
 		<div>
 			<Button

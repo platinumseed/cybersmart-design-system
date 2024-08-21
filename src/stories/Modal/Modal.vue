@@ -46,7 +46,7 @@ const handleCloseEvent = (event: Event) => {
 
 <style scoped>
 .c-modal::part(panel) {
-	@apply rounded-3xl p-10 relative w-[70%]
+	@apply rounded-3xl p-10 relative w-[90%] max-w-[1110px]
 }
 
 .c-modal::part(header) {
@@ -54,7 +54,15 @@ const handleCloseEvent = (event: Event) => {
 }
 
 .c-modal::part(title) {
+	@apply hidden
+}
+
+.c-modal::part(body) {
 	@apply p-0
+}
+
+.c-modal::part(footer) {
+	@apply hidden
 }
 
 .c-modal::part(close-button) {

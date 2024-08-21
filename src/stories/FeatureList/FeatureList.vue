@@ -1,7 +1,7 @@
 <template>
 	<div :class="colClass">
 		<div v-for="featureItem in featureItems" :key="featureItem" class="flex items-center gap-2 mb-4 last:mb-0'">
-			<span :class="`${iconColor} material-symbols-outlined transition-all`">check_circle</span>
+			<span :class="`${iconColor} material-symbols-outlined transition-all text-[32px]`">check_circle</span>
 			<span :class="`${textColor} text-lg font-light transition-all`">{{ featureItem }}</span>
 		</div>
 	</div>

@@ -5,7 +5,9 @@
 </template>
 
 <script lang="ts" setup>
-defineProps({
-	icon: String
-})
+
+interface Props {
+	icon: string
+}
+defineProps<Props>()
 </script>

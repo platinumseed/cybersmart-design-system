@@ -11,7 +11,11 @@
 	>
 		<div 
 			class="
-				p-10
+				px-8
+				pt-8
+				pb-16
+				md:pt-10
+				md:pb-20
 				group-hover:bg-blue
 				transition-all
 				bg-right-bottom
@@ -32,7 +36,7 @@
 					<slot />
 				</div>
 			</div>
-			<div class="w-[calc(100%_-_88px)]">
+			<div class="">
 				<FeatureList :feature-items="features" :iconColor="featureColor" :textColor="featureColor"  />
 			</div>
 			<Button
@@ -41,7 +45,7 @@
 				icon-before="south_east"
 				:href="url"
 				:target="target"
-				class="absolute bottom-10 right-10"
+				class="absolute bottom-5 right-5 md:bottom-8 md:right-8"
 				@click="handleClick($event)"
 			/>
 		</div>

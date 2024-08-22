@@ -86,7 +86,7 @@ const hasText = computed(() => {
 const buttonClasses = computed(() => ({
 	'rounded-full border': props.type == 'primary' || props.type == 'secondary' || props.type == 'outline',
 	'bg-teal border-teal hover:bg-emerald-300 hover:border-emerald-300 focus-visible:ring-green-400': props.type == 'primary',
-	'bg-slate-900 border-slate-900 hover:border-sky-950  hover:bg-sky-950  focus-visible:ring-sky-900': props.type == 'secondary',
+	'bg-navy border-navy hover:border-[#092E4F]  hover:bg-[#092E4F]  focus-visible:ring-sky-900': props.type == 'secondary',
 	'bg-white border-navy hover:border-digital-black focus-visible:ring-[#144877]': props.type == 'outline',
 	'focus-visible:ring-sky-900': props.type == 'ghost',
 	'w-12 h-12 text-center flex flex-col justify-center' : !hasText.value,
@@ -94,7 +94,7 @@ const buttonClasses = computed(() => ({
 }));
 
 const textClasses = computed(() => ({
-	'text-slate-900': props.type == 'primary',
+	'text-navy': props.type == 'primary',
 	'text-white': props.type == 'secondary',
 	'text-navy group-hover:text-digital-black': props.type == 'outline',
 	'text-digital-black group-hover:text-blue': props.type == 'ghost',

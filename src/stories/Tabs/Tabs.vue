@@ -1,6 +1,6 @@
 <template>
-	<sl-tab-group :class="['c-tab-group', tabGroupClasses]">
-		<sl-tab v-for="tab in tabsTitles" :key="tab.label" :class="[tabClasses, 'c-tab']" slot="nav" :panel="tab.name">{{ tab.label }}</sl-tab>
+	<sl-tab-group v-once :class="['c-tab-group', tabGroupClasses]">
+		<sl-tab v-once v-for="tab in tabsTitles" :key="tab.label" :class="[tabClasses, 'c-tab']" slot="nav" :panel="tab.name">{{ tab.label }}</sl-tab>
 		<slot />
 	</sl-tab-group>
 </template>

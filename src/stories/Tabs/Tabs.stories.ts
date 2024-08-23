@@ -35,7 +35,7 @@ export const Underline: Story = {
 		template: `
 			<Tabs v-bind="args">
 				<Tab v-for="tab in tabs" :key="tab.name" :label="tab.label" :name="tab.name">
-					<h3>{{tab.label}} content</h3>
+					<h3>{{tab.label}} content here</h3>
 				</Tab>
 			</Tabs>
 		`,

@@ -9,7 +9,7 @@
 				v-if="linkUrl && linkUrl"
 				type="ghost"
 				:label="linkText"
-				:url="linkUrl"
+				:href="linkUrl"
 				icon-after="arrow_right_alt"
 				:class="'!p-0'"
 				@click="handleClick($event)"

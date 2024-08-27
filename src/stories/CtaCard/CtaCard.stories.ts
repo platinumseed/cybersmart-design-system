@@ -12,7 +12,7 @@ const meta: Meta<typeof CtaCard> = {
 			alt: 'image',
 		},
 		url: '#',
-		tags: ['home office', 'fibre'],
+		tags: ['home office', 'fibre', 'home office', 'fibre', 'home office', 'fibre'],
 	},
 	argTypes: {},
 	tags: ['autodocs'],

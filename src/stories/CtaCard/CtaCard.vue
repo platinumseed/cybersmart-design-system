@@ -20,13 +20,16 @@
 				flex-col 
 				justify-between
 				gap-9  
-				p-10
+				px-10
+				pt-10
+				pb-16
 				h-full
 				group-hover:bg-blue
 				transition-all
 				bg-right-bottom
 				bg-no-repeat
 				group-hover:bg-[url('../assets/logo-icon-bg.svg')]
+				relative
 			"
 		>
 			<div class="flex flex-col gap-9">
@@ -35,22 +38,24 @@
 					<slot name="description" />
 				</div>
 			</div>
-			<div class="flex gap-4 justify-between">
-				<div class="flex gap-3 flex-wrap">
-					<template v-if="tags">
-						<Badge v-for="tag in tags" :key="tag" size="small" :type="badgeType">{{ tag }}</Badge>
-					</template>
-				</div>
-				<Button
-					v-if="url"
-					type="primary"
-					label=""
-					icon-before="south_east"
-					:href="url"
-					class="shrink-0"
-					@click="handleClick($event)"
-				/>
+			<div 
+				class="flex gap-3 flex-wrap"
+				:class="{ 'cursor-pointer' : hasFooterClickListener}"
+				@click="handleFooterClick()"
+			>
+				<template v-if="tags">
+					<Badge v-for="tag in tags" :key="tag" size="small" :type="badgeType">{{ tag }}</Badge>
+				</template>
 			</div>
+			<Button
+				v-if="url"
+				type="primary"
+				label=""
+				icon-before="south_east"
+				:href="url"
+				class="absolute bottom-3 right-10"
+				@click="handleClick($event)"
+			/>
 		</div>
 		<div v-if="image" class="">
 			<img 
@@ -198,7 +203,7 @@
 </template>
 
 <script lang="ts" setup>
-import {ref, computed} from 'vue';
+import {ref, computed, getCurrentInstance} from 'vue';
 import Button from '../Button/Button.vue';
 import Badge from '../Badge/Badge.vue';
 interface Image {
@@ -218,19 +223,27 @@ const hover = ref(false);
 
 const badgeType = computed(() => hover.value ? 'white' : 'accent');
 
+const hasFooterClickListener = computed(
+	() => !!getCurrentInstance()?.vnode.props?.['onFooterClicked']
+);
+
 const isFlipped = ref(false);
 
 function flipCard() {
   isFlipped.value = !isFlipped.value;
 }
 
-const emit = defineEmits(['buttonClicked'])
+const emit = defineEmits(['buttonClicked', 'footerClicked'])
 
 function handleClick(event: Event) {
 	if (!props.url || props.url === '#') {
 		event.preventDefault()
 	}
   	emit('buttonClicked')
+}
+
+function handleFooterClick() {
+  	emit('footerClicked')
 }
 
 </script>

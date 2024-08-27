@@ -60,7 +60,6 @@ const emit = defineEmits(['buttonClicked'])
 
 function handleClick(event: Event) {
 	if (!props.ctaUrl || props.ctaUrl === '#') {
-		console.log('here');
 		event.preventDefault()
 	}
 	emit('buttonClicked')

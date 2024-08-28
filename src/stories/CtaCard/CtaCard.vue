@@ -53,7 +53,7 @@
 				label=""
 				icon-before="south_east"
 				:href="url"
-				class="absolute bottom-3 right-10"
+				class="absolute bottom-4 right-4"
 				@click="handleClick($event)"
 			/>
 		</div>

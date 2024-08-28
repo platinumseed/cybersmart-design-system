@@ -28,7 +28,7 @@ export const Underline: Story = {
 				{name: 'tab-1', label: 'Tab 1'},
 				{name: 'tab-2', label: 'Tab 2'},
 				{name: 'tab-3', label: 'Tab 3'},
-				{name: 'tab-4', label: 'Tab 4', disabled: true},
+				{name: 'tab-4', label: 'Tab 4'},
 			]
 			return { tabs, args };
 		},

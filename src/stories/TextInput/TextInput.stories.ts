@@ -11,7 +11,6 @@ const meta: Meta<typeof TextInput> = {
 		type: 'text',
 		note: 'Enter your value above',
 		placeholder: 'Enter your value',
-		modelValue: '',
 	},
 	argTypes: {
 		label: { control: 'text' },
@@ -22,7 +21,6 @@ const meta: Meta<typeof TextInput> = {
 		invalid: { control: 'boolean' },
 		valid: { control: 'boolean' },
 		invalidMessage: { control: 'text' },
-		modelValue: { control: 'text' },
 	},
 	tags: ['autodocs'],
 };
@@ -39,7 +37,7 @@ export const Default: Story = {
 	render: (args) => ({
 		components: { TextInput },
 		setup() {
-			const value = ref(args.modelValue);
+			const value = ref('test');
 			return { args, value };
 		},
 		template: `<TextInput v-bind="args" v-model="value" />`,

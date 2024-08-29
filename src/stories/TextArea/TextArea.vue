@@ -19,10 +19,9 @@
 				:class="inputClass" 
 				:name="name" 
 				:id="name" 
-				:value="internalValue"
+				v-model="modelValue"
 				@focus="onFocus"
         		@blur="onBlur"
-				@input="updateValue" 
 				:placeholder="placeholder" 
 			/>
 			<div class="absolute right-4 top-4 flex items-center gap-2">
@@ -36,7 +35,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, toRefs, ref } from 'vue';
+import { computed, ref } from 'vue';
 
 interface Props {
 	label?: string;
@@ -46,7 +45,6 @@ interface Props {
 	valid?: boolean;
 	invalidMessage?: string;
 	placeholder?: string;
-	modelValue: string | number;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -55,25 +53,17 @@ const props = withDefaults(defineProps<Props>(), {
 	invalidMessage: 'Invalid input',
 });
 
+// Use defineModel to handle v-model binding with the parent
+const modelValue = defineModel<string | number>('modelValue', {
+	default: ''
+});
+
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string | number): void;
   (e: 'focus', event: FocusEvent): void;
   (e: 'blur', event: FocusEvent): void;
 }>();
 
-const { modelValue } = toRefs(props);
-
 const focus = ref(false);
-
-const internalValue = computed({
-	get: () => modelValue.value,
-	set: (value: string | number) => emit('update:modelValue', value)
-});
-
-const updateValue = (event: Event) => {
-	const target = event.target as HTMLInputElement;
-	internalValue.value = target.value;
-};
 
 function onFocus(event: FocusEvent) {
 	focus.value = true;

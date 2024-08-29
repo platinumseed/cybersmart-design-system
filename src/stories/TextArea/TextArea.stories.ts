@@ -10,7 +10,6 @@ const meta: Meta<typeof TextArea> = {
 		name: 'demo',
 		note: 'Enter your value above',
 		placeholder: 'Enter your value',
-		modelValue: '',
 	},
 	argTypes: {
 		label: { control: 'text' },
@@ -19,7 +18,6 @@ const meta: Meta<typeof TextArea> = {
 		invalid: { control: 'boolean' },
 		valid: { control: 'boolean' },
 		invalidMessage: { control: 'text' },
-		modelValue: { control: 'text' },
 	},
 	tags: ['autodocs'],
 };
@@ -36,7 +34,7 @@ export const Default: Story = {
 	render: (args) => ({
 		components: { TextArea },
 		setup() {
-			const value = ref(args.modelValue);
+			const value = ref('');
 			return { args, value };
 		},
 		template: `<TextArea v-bind="args" v-model="value" />`,

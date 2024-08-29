@@ -12,11 +12,9 @@ const meta: Meta<typeof SelectInput> = {
 			{ label: 'Option 2', value: 'value-2', icon: 'account_circle' },
 			{ label: 'Option 3', value: 'value-3', icon: 'account_circle' },
 		],
-		modelValue: '',
 	},
 	argTypes: {
 		label: { control: 'text' },
-		modelValue: { control: 'text' },
 	},
 	tags: ['autodocs'],
 };
@@ -33,7 +31,7 @@ export const Default: Story = {
 	render: (args) => ({
 		components: { SelectInput },
 		setup() {
-			const value = ref(args.modelValue);
+			const value = ref('');
 			return { args, value };
 		},
 		template: `<SelectInput v-bind="args" v-model="value" />`,

@@ -1,4 +1,3 @@
-<!-- TextInput.vue -->
 <template>
 	<div class="c-text-input">
 		<div class="relative">
@@ -21,10 +20,9 @@
 				:type="inputType" 
 				:name="name" 
 				:id="name" 
-				:value="computedValue"
+				v-model="modelValue"
 				@focus="onFocus"
-        		@blur="onBlur"
-				@input="updateValue" 
+				@blur="onBlur"
 				:placeholder="placeholder" 
 			/>
 			<div class="absolute right-4 inset-y-0 h-fit m-auto flex items-center gap-2">
@@ -43,6 +41,7 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
 
+// Define properties for the component
 interface Props {
 	label?: string;
 	name: string;
@@ -53,43 +52,29 @@ interface Props {
 	valid?: boolean;
 	invalidMessage?: string;
 	placeholder?: string;
-	modelValue?: string | number; 
 }
 
+// Define props with default values and use defineModel to handle model binding
 const props = withDefaults(defineProps<Props>(), {
 	invalid: false,
 	valid: false,
 	invalidMessage: 'Invalid input',
-	modelValue: '', 
+});
+
+// Use defineModel to handle v-model binding with the parent
+const modelValue = defineModel<string | number>('modelValue', {
+	default: ''
 });
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string | number): void;
   (e: 'focus', event: FocusEvent): void;
   (e: 'blur', event: FocusEvent): void;
 }>();
 
-// const { modelValue } = toRefs(props);
-
 const focus = ref(false);
-
 const unhidePassword = ref(false);
 
-const internalValue = ref(props.modelValue);
-
-const computedValue = computed({
-    get: () => internalValue.value,
-    set: (value: string | number) => {
-        internalValue.value = value;
-        emit('update:modelValue', value);
-    }
-});
-
-const updateValue = (event: Event) => {
-    const target = event.target as HTMLInputElement;
-    computedValue.value = target.value;
-};
-
+// Define computed properties for dynamic classes and input type
 const inputClass = computed(() => ({
 	'ps-14': props.icon || props.type === 'password',
 	'pe-14 border-red-600': props.invalid && !props.valid,
@@ -103,18 +88,19 @@ const labelClass = computed(() => ({
 	'text-sky-500' : focus.value && !props.invalid,
 	'text-stone-800': !focus.value && !props.invalid,
 	'text-red-600': props.invalid && !props.valid
-}))
+}));
 
 const inputType = computed(() => {
 	if (props.type === 'password' && unhidePassword.value) {
-		return 'text'
+		return 'text';
 	}
-	return props.type
+	return props.type;
 });
 
+// Event handlers for input focus and blur
 function onFocus(event: FocusEvent) {
 	focus.value = true;
-  	emit('focus', event);
+	emit('focus', event);
 }
 
 const onBlur = (event: FocusEvent) => {
@@ -122,10 +108,10 @@ const onBlur = (event: FocusEvent) => {
 	emit('blur', event);
 };
 
+// Toggle password visibility for password input type
 const togglePasswordVisibility = () => {
-	unhidePassword.value = !unhidePassword.value
-}
-
+	unhidePassword.value = !unhidePassword.value;
+};
 </script>
 
 <style scoped>

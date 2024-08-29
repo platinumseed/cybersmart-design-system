@@ -8,7 +8,6 @@ const meta: Meta<typeof SearchInput> = {
 	args: {
 		name: 'demo',
 		placeholder: 'Search',
-		modelValue: '',
 	},
 	argTypes: {
 	},
@@ -27,7 +26,7 @@ export const Default: Story = {
 	render: (args) => ({
 		components: { SearchInput },
 		setup() {
-			const value = ref(args.modelValue);
+			const value = ref('');
 			return { args, value };
 		},
 		template: `<SearchInput v-bind="args" v-model="value" />`,

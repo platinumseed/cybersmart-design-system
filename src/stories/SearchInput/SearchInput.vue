@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, toRefs, ref } from 'vue';
+import { computed, ref } from 'vue';
 interface Props {
 	name: string;
 	label?: string;

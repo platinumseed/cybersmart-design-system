@@ -5,7 +5,7 @@
 			<div class="text-white text-sm font-light">{{ ribbonText }}</div>
 		</div>
 		<div class="flex flex-col justify-between items-center text-center h-full">
-			<div class="text-3xl lg:text-4xl 2xl:text-5xl font-semibold" :class="active ? 'text-white' : 'text-blue'">{{ title }}</div>
+			<div class="text-2xl lg:text-2xl 2xl:text-3xl font-semibold" :class="active ? 'text-white' : 'text-blue'">{{ title }}</div>
 			<p v-if="description" class="text-lg lg:text-lg 2xl:text-base font-light mt-4" :class="active ? 'text-white' : 'text-slate-500'">{{ description }}</p>
 			<div class="text-lg lg:text-lg 2xl:text-base font-semibold mt-6" :class="active ? 'text-white' : 'text-digital-black'">{{ cost }}</div>
 			<Button 

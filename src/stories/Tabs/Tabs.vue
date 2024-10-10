@@ -97,6 +97,6 @@ if (slots.default) {
 }
 
 .c-tab--filled[active]::part(base) {
-	@apply bg-slate-50 rounded-2xl
+	@apply bg-slate-200 rounded-2xl
 }
 </style>

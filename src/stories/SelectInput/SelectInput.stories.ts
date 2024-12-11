@@ -34,6 +34,6 @@ export const Default: Story = {
 			const value = ref('');
 			return { args, value };
 		},
-		template: `<SelectInput v-bind="args" v-model="value" />`,
+		template: `<SelectInput v-bind="args" v-model="value" @change="console.log('changed')" />`,
 	}),
 };

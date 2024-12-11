@@ -55,12 +55,15 @@ const props = withDefaults(defineProps<Props>(), {
 
 const focus = ref(false);
 
-const emit = defineEmits<{ (e: 'update:modelValue', value: string | number): void }>();
+const emit = defineEmits<{ 
+	(e: 'update:modelValue', value: string | number): void,
+	(e: 'change', value: string | number): void 
+}>();
 
 const updateValue = (event: Event) => {
 	const target = event.target as HTMLSelectElement;
-	console.log(target.value);
 	emit('update:modelValue', target.value);
+	emit('change', target.value);
 };
 
 const comboboxBorderColor = computed(() => {

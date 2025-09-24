@@ -53,7 +53,6 @@ const showMoreInfo = ref<boolean>(false)
 const toggleMoreText = computed(() => showMoreInfo.value ? 'Less Info' : 'More Info')
 const toggleMoreIcon = computed(() => showMoreInfo.value ? 'keyboard_arrow_up' : 'keyboard_arrow_down')
 const cardClasses = computed(() => {
-	console.log('PackageCard - props.active:', props.active, 'title:', props.title);
 	return props.active ? 'border-blue bg-blue' : 'border-slate-300 bg-white'
 })
 

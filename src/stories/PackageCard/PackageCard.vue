@@ -1,8 +1,5 @@
 <template>
 	<div class="c-package-card px-8 py-14 rounded-3xl border relative overflow-hidden h-full" :class="cardClasses">
-		<div class="absolute top-0 right-0 bg-yellow-300 text-black text-xs p-1 z-50">
-			CARD DEBUG: active={{ active }} | cardClasses={{ cardClasses }}
-		</div>
 		<div v-if="ribbonText" class="absolute top-0 left-0 w-full bg-blue py-2 flex items-center justify-center gap-2 rounted-t-3xl">
 			<div v-if="ribbonIcon" class="material-symbols-outlined text-white">{{ ribbonIcon }}</div>
 			<div class="text-white text-sm font-light">{{ ribbonText }}</div>

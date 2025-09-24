@@ -7,7 +7,7 @@
 			slot="nav" 
 			:panel="tab.name"
 			:active="index === 0"
-		>{{ tab.label }} test</sl-tab>
+		>{{ tab.label }}</sl-tab>
 		<slot />
 	</sl-tab-group>
 </template>

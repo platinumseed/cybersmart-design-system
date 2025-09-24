@@ -1,5 +1,5 @@
 <template>
-	<sl-tab-panel v-once class="c-tab-panel" :name="name">
+	<sl-tab-panel class="c-tab-panel" :name="name">
 		<div class="">
 			<slot />
 		</div>

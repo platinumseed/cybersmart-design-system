@@ -1,5 +1,5 @@
 <template>
-	<sl-tab-group v-once :class="['c-tab-group', tabGroupClasses]">
+	<sl-tab-group :class="['c-tab-group', tabGroupClasses]">
 		<sl-tab 
 			v-for="(tab, index) in tabsTitles" 
 			:key="tab.label" 

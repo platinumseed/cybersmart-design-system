@@ -85,7 +85,7 @@ const hasText = computed(() => {
 
 const buttonClasses = computed(() => ({
 	'rounded-full border': props.type == 'primary' || props.type == 'secondary' || props.type == 'outline',
-	'bg-blue border-blue hover:bg-teal focus-visible:ring-digital-black': props.type == 'primary',
+	'bg-blue border-blue hover:bg-teal hover:border-teal focus-visible:ring-digital-black': props.type == 'primary',
 	'bg-navy border-navy hover:border-[#092E4F]  hover:bg-[#092E4F]  focus-visible:ring-sky-900': props.type == 'secondary',
 	'bg-white border-navy hover:border-digital-black focus-visible:ring-[#144877]': props.type == 'outline',
 	'focus-visible:ring-sky-900': props.type == 'ghost',

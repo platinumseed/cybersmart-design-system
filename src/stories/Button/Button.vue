@@ -85,7 +85,7 @@ const hasText = computed(() => {
 
 const buttonClasses = computed(() => ({
 	'rounded-full border': props.type == 'primary' || props.type == 'secondary' || props.type == 'outline',
-	'bg-teal border-teal hover:bg-emerald-300 hover:border-emerald-300 focus-visible:ring-green-400': props.type == 'primary',
+	'bg-blue border-blue hover:bg-teal focus-visible:ring-digital-black': props.type == 'primary',
 	'bg-navy border-navy hover:border-[#092E4F]  hover:bg-[#092E4F]  focus-visible:ring-sky-900': props.type == 'secondary',
 	'bg-white border-navy hover:border-digital-black focus-visible:ring-[#144877]': props.type == 'outline',
 	'focus-visible:ring-sky-900': props.type == 'ghost',
@@ -97,7 +97,7 @@ const textClasses = computed(() => ({
 	'text-navy': props.type == 'primary',
 	'text-white': props.type == 'secondary',
 	'text-navy group-hover:text-digital-black': props.type == 'outline',
-	'text-digital-black group-hover:text-blue': props.type == 'ghost',
+	'text-blue group-hover:text-digital-black': props.type == 'ghost',
 }));
 
 const el = computed(() => props.href ? 'a' : 'button');

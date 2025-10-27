@@ -17,7 +17,7 @@
 				@click="handleClick($event)"
 			/>
 			<div v-if="$slots.moreInfo" class="flex flex-col gap-4 mt-6 items-center">
-				<a @click.prevent="showMoreInfo = !showMoreInfo" href="#" class="flex items-center gap-2 transition-all text-center" :class="active ? 'text-white hover:text-digital-black' : 'text-digital-black hover:text-blue'">
+				<a @click.prevent="showMoreInfo = !showMoreInfo" href="#" class="flex items-center gap-2 transition-all text-center font-semibold" :class="active ? 'text-white hover:text-digital-black' : 'text-blue hover:text-digital-black'">
 					{{ toggleMoreText }}
 					<span class="material-symbols-outlined text-xl">{{ toggleMoreIcon }}</span>
 				</a>

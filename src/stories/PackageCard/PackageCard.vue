@@ -10,7 +10,7 @@
 			<div class="text-lg lg:text-lg 2xl:text-base font-semibold mt-6" :class="active ? 'text-white' : 'text-digital-black'">{{ cost }}</div>
 			<Button 
 				v-if="ctaLabel" 
-				type="outline" 
+				:type="buttonStyle" 
 				:label="ctaLabel" 
 				:href="ctaUrl" 
 				class="mt-10 w-full" 
@@ -52,6 +52,7 @@ const showMoreInfo = ref<boolean>(false)
 
 const toggleMoreText = computed(() => showMoreInfo.value ? 'Less Info' : 'More Info')
 const toggleMoreIcon = computed(() => showMoreInfo.value ? 'keyboard_arrow_up' : 'keyboard_arrow_down')
+const buttonStyle = computed(() => props.active ? 'outline' : 'primary')
 const cardClasses = computed(() => {
 	return props.active ? 'border-blue bg-blue' : 'border-slate-300 bg-white'
 })

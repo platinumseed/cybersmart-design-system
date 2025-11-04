@@ -94,7 +94,7 @@
 								v-on:click="()=>({})"
 								label=""
 								icon-before="south_east"
-								:href="url"
+								@click="handleClick($event)"
 							/>
 						</div>
 					</div>
@@ -130,7 +130,7 @@
 								v-on:click="()=>({})"
 								label=""
 								icon-before="south_east"
-								:href="url"
+								@click="handleClick($event)"
 							/>
 						</div>
 					</div>
@@ -159,7 +159,7 @@
 								v-on:click="()=>({})"
 								label=""
 								icon-before="south_east"
-								:href="url"
+								@click="handleClick($event)"
 							/>
 						</div>
 					</div>
@@ -192,7 +192,7 @@
 								v-on:click="()=>({})"
 								label=""
 								icon-before="south_east"
-								:href="url"
+								@click="handleClick($event)"
 							/>
 						</div>
 					</div>

@@ -1,10 +1,10 @@
 <template>
-	<sl-tab-group :class="['c-tab-group', tabGroupClasses]">
-		<sl-tab 
-			v-for="(tab, index) in tabsTitles" 
-			:key="tab.label" 
-			:class="[tabClasses, 'c-tab']" 
-			slot="nav" 
+	<sl-tab-group ref="tabGroupRef" :class="['c-tab-group', tabGroupClasses]">
+		<sl-tab
+			v-for="(tab, index) in tabsTitles"
+			:key="tab.name"
+			:class="[tabClasses, 'c-tab']"
+			slot="nav"
 			:panel="tab.name"
 			:active="index === 0"
 		>{{ tab.label }}</sl-tab>
@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, useSlots, Fragment } from 'vue'
+import { computed, useSlots, Fragment, ref, watch } from 'vue'
 import Tab from './Tab.vue'
 import '@shoelace-style/shoelace/dist/components/tab-group/tab-group.js'
 import '@shoelace-style/shoelace/dist/components/tab/tab.js'
@@ -44,27 +44,44 @@ const tabClasses = computed(() => ({
 }));
 
 const slots = useSlots();
-let tabsTitles: Tab[] = [];
+const tabGroupRef = ref<any>(null);
 
-if (slots.default) {
-	const slotContent = slots.default();
-	slotContent.forEach((tab: any) => {
-		if (tab.type === Fragment) {
-			tab.children.forEach((child: any) => {
-				tabsTitles.push({
-					label: child.props.label,
-					name: child.props.name
+// Make tabsTitles reactive so it updates when slot content changes
+const tabsTitles = computed(() => {
+	const titles: Tab[] = [];
+
+	if (slots.default) {
+		const slotContent = slots.default();
+		slotContent.forEach((tab: any) => {
+			if (tab.type === Fragment) {
+				tab.children.forEach((child: any) => {
+					if (child.props) {
+						titles.push({
+							label: child.props.label,
+							name: child.props.name
+						})
+					}
 				})
-			})
-		}
-		else {
-			tabsTitles.push({
-				label: tab.props.label,
-				name: tab.props.name
-			})
-		}
-	});
-}
+			}
+			else if (tab.props) {
+				titles.push({
+					label: tab.props.label,
+					name: tab.props.name
+				})
+			}
+		});
+	}
+
+	return titles;
+});
+
+// Reset the tab group when tabs change to ensure proper state
+watch(tabsTitles, () => {
+	if (tabGroupRef.value) {
+		// Reset to first tab when tabs change
+		tabGroupRef.value.show(tabsTitles.value[0]?.name);
+	}
+}, { deep: true });
 
 </script>
 

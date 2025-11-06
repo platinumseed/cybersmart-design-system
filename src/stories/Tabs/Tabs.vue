@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, useSlots, Fragment, ref, watch, nextTick } from 'vue'
+import { computed, useSlots, Fragment, ref, watch, nextTick, onUpdated } from 'vue'
 import Tab from './Tab.vue'
 import '@shoelace-style/shoelace/dist/components/tab-group/tab-group.js'
 import '@shoelace-style/shoelace/dist/components/tab/tab.js'
@@ -76,8 +76,8 @@ const extractTabTitles = () => {
 	return titles;
 };
 
-// Update tab titles whenever the component updates
-watch(() => slots.default?.(), async () => {
+// Extract tab titles on initial mount
+const initializeTabs = async () => {
 	const newTitles = extractTabTitles();
 	tabsTitles.value = newTitles;
 
@@ -96,7 +96,13 @@ watch(() => slots.default?.(), async () => {
 			}
 		}
 	}
-}, { deep: true, immediate: true });
+};
+
+// Initialize on mount
+watch(() => slots.default?.(), initializeTabs, { immediate: true });
+
+// Update whenever component is updated (slot content changes)
+onUpdated(initializeTabs);
 
 </script>
 

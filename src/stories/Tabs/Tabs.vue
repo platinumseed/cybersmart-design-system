@@ -46,6 +46,7 @@ const tabClasses = computed(() => ({
 const slots = useSlots();
 const tabGroupRef = ref<any>(null);
 const tabsTitles = ref<Tab[]>([]);
+let previousTabNames: string[] = [];
 
 // Function to extract tab titles from slot content
 const extractTabTitles = () => {
@@ -76,9 +77,24 @@ const extractTabTitles = () => {
 	return titles;
 };
 
+// Check if tab titles have changed
+const haveTabsChanged = (newTitles: Tab[]): boolean => {
+	if (newTitles.length !== previousTabNames.length) {
+		return true;
+	}
+	return newTitles.some((tab, index) => tab.name !== previousTabNames[index]);
+};
+
 // Extract tab titles on initial mount
 const initializeTabs = async () => {
 	const newTitles = extractTabTitles();
+
+	// Only update if tabs have actually changed
+	if (!haveTabsChanged(newTitles)) {
+		return;
+	}
+
+	previousTabNames = newTitles.map(t => t.name);
 	tabsTitles.value = newTitles;
 
 	// Wait for DOM to update with new tabs and panels

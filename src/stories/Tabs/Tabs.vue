@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, useSlots, Fragment, ref, watch } from 'vue'
+import { computed, useSlots, Fragment, ref, watch, nextTick } from 'vue'
 import Tab from './Tab.vue'
 import '@shoelace-style/shoelace/dist/components/tab-group/tab-group.js'
 import '@shoelace-style/shoelace/dist/components/tab/tab.js'
@@ -45,9 +45,10 @@ const tabClasses = computed(() => ({
 
 const slots = useSlots();
 const tabGroupRef = ref<any>(null);
+const tabsTitles = ref<Tab[]>([]);
 
-// Make tabsTitles reactive so it updates when slot content changes
-const tabsTitles = computed(() => {
+// Function to extract tab titles from slot content
+const extractTabTitles = () => {
 	const titles: Tab[] = [];
 
 	if (slots.default) {
@@ -73,13 +74,22 @@ const tabsTitles = computed(() => {
 	}
 
 	return titles;
-});
+};
 
-// Reset the tab group when tabs change to ensure proper state
-watch(tabsTitles, () => {
-	if (tabGroupRef.value) {
+// Update tab titles whenever the component updates
+watch(() => slots.default?.(), async () => {
+	const newTitles = extractTabTitles();
+	tabsTitles.value = newTitles;
+
+	// Wait for DOM to update with new tabs and panels
+	await nextTick();
+
+	if (tabGroupRef.value && tabsTitles.value.length > 0) {
 		// Reset to first tab when tabs change
-		tabGroupRef.value.show(tabsTitles.value[0]?.name);
+		const firstTabName = tabsTitles.value[0]?.name;
+		if (firstTabName) {
+			tabGroupRef.value.show(firstTabName);
+		}
 	}
 }, { deep: true });
 

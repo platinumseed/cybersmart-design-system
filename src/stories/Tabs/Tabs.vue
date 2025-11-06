@@ -83,15 +83,20 @@ watch(() => slots.default?.(), async () => {
 
 	// Wait for DOM to update with new tabs and panels
 	await nextTick();
+	await nextTick(); // Extra tick to ensure Shoelace components are ready
 
 	if (tabGroupRef.value && tabsTitles.value.length > 0) {
 		// Reset to first tab when tabs change
 		const firstTabName = tabsTitles.value[0]?.name;
 		if (firstTabName) {
-			tabGroupRef.value.show(firstTabName);
+			try {
+				tabGroupRef.value.show(firstTabName);
+			} catch (e) {
+				// Silently fail if tab-group is not ready yet
+			}
 		}
 	}
-}, { deep: true });
+}, { deep: true, immediate: true });
 
 </script>
 

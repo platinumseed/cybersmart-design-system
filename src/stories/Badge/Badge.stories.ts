@@ -8,7 +8,7 @@ const meta: Meta<typeof Badge> = {
 		type: 'accent',
 	},
 	argTypes: {
-		type: { control: 'select', options: ['accent', 'muted', 'warning', 'success', 'error'] },
+		type: { control: 'select', options: ['accent', 'active', 'muted', 'warning', 'success', 'error'] },
 		size: { control: 'select', options: ['small', 'large'] },
 	},
 	tags: ['autodocs'],

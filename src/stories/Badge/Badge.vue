@@ -18,6 +18,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const badgeClass = computed(() => ({
 	'c-badge--accent': props.type === 'accent',
+	'c-badge--active': props.type === 'active',
 	'c-badge--muted': props.type === 'muted',
 	'c-badge--warning': props.type === 'warning',
 	'c-badge--success': props.type === 'success',
@@ -34,6 +35,10 @@ const badgeClass = computed(() => ({
 
 .c-badge--accent::part(base) {
 	@apply text-sky-500 border-sky-500 bg-transparent
+}
+
+.c-badge--active::part(base) {
+	@apply bg-sky-500 border-sky-500 text-white
 }
 
 .c-badge--muted::part(base) {

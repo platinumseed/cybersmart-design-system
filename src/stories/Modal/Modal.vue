@@ -28,6 +28,10 @@ const props = withDefaults(defineProps<Props>(), {
 	blockClose: false
 });
 
+const emit = defineEmits<{
+	close: []
+}>();
+
 const modal = ref<HTMLElement | null>(null);
 
 const closeModal = () => {
@@ -39,6 +43,8 @@ const closeModal = () => {
 const handleCloseEvent = (event: Event) => {
 	if (props.blockClose) {
 		event.preventDefault();
+	} else {
+		emit('close');
 	}
 }
 

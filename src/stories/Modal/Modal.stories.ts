@@ -25,10 +25,13 @@ export const Default: Story = {
 			const open = () => {
 				showModal.value = true;
 			}
-			return { args, open, showModal };
+			const handleClose = () => {
+				showModal.value = false;
+			}
+			return { args, open, showModal, handleClose };
 		},
 		template: `
-			<Modal ref="modal" v-bind="args" :open="showModal"></Modal>
+			<Modal ref="modal" v-bind="args" :open="showModal" @close="handleClose">Test</Modal>
 			<Button label="Open" @click="open" />
 		`,
 	}),

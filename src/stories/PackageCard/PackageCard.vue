@@ -25,7 +25,18 @@
 					<slot v-if="showMoreInfo" name="moreInfo"></slot>
 				</div>
 			</div>
-		</div>	
+
+			<a v-if="$slots.promoInfo" @click.prevent="showPromoInfo = true" href="#" class="absolute bottom-2 right-4" :class="active ? 'text-white' : 'text-digital-black'">
+				<span class="material-symbols-outlined">
+					info
+				</span>
+			</a>
+
+			<div v-if="$slots.promoInfo && showPromoInfo" class="p-8 bg-slate-50 absolute inset-0">
+				<a @click.prevent="showPromoInfo = false" href="#" class="material-symbols-outlined absolute top-2 right-4">close</a>
+				<slot name="promoInfo"></slot>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -49,6 +60,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const showMoreInfo = ref<boolean>(false)
+const showPromoInfo = ref<boolean>(false)
 
 const toggleMoreText = computed(() => showMoreInfo.value ? 'Less Info' : 'More Info')
 const toggleMoreIcon = computed(() => showMoreInfo.value ? 'keyboard_arrow_up' : 'keyboard_arrow_down')

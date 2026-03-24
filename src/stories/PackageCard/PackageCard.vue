@@ -26,14 +26,14 @@
 				</div>
 			</div>
 
-			<a v-if="$slots.promoInfo" @click.prevent="showPromoInfo = true" href="#" class="absolute bottom-2 right-4" :class="active ? 'text-white' : 'text-digital-black'">
+			<a v-if="$slots.promoInfo" @click.prevent="showPromoInfo = true" href="#" class="absolute bottom-2 right-4 hover:text-blue transition-all divide-neutral-300" :class="active ? 'text-white' : 'text-digital-black'">
 				<span class="material-symbols-outlined">
 					info
 				</span>
 			</a>
 
 			<div v-if="$slots.promoInfo && showPromoInfo" class="p-8 bg-slate-50 absolute inset-0">
-				<a @click.prevent="showPromoInfo = false" href="#" class="material-symbols-outlined absolute top-2 right-4">close</a>
+				<a @click.prevent="showPromoInfo = false" href="#" class="material-symbols-outlined absolute top-2 right-4 hover:text-blue transition-all divide-neutral-300">close</a>
 				<slot name="promoInfo"></slot>
 			</div>
 		</div>

@@ -1,5 +1,5 @@
 <template>
-	<sl-badge :class="['c-badge', badgeClass]"><slot /></sl-badge>
+	<sl-badge :class="['c-badge', badgeClass]" :style="cssVariables"><slot /></sl-badge>
 </template>
 
 <script lang="ts" setup>
@@ -9,23 +9,48 @@ import '@shoelace-style/shoelace/dist/components/badge/badge.js';
 interface Props {
 	type: string
 	size?: 'small' | 'large'
+	color?: string
+	active?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
 	type: 'accent',
 	size: 'small',
+	color: undefined,
+	active: false,
 });
 
 const badgeClass = computed(() => ({
-	'c-badge--accent': props.type === 'accent',
-	'c-badge--active': props.type === 'active',
-	'c-badge--muted': props.type === 'muted',
-	'c-badge--warning': props.type === 'warning',
-	'c-badge--success': props.type === 'success',
-	'c-badge--error': props.type === 'error',
-	'c-badge--white': props.type === 'white',
+	'c-badge--accent': props.type === 'accent' && !props.color,
+	'c-badge--active': props.type === 'active' && !props.color,
+	'c-badge--muted': props.type === 'muted' && !props.color,
+	'c-badge--warning': props.type === 'warning' && !props.color,
+	'c-badge--success': props.type === 'success' && !props.color,
+	'c-badge--error': props.type === 'error' && !props.color,
+	'c-badge--white': props.type === 'white' && !props.color,
+	'c-badge--custom': !!props.color,
 	'c-badge--large': props.size === 'large',
 }))
+
+const cssVariables = computed(() => {
+	if (!props.color) return {};
+
+	if (props.active) {
+		// Active state: color background with white text
+		return {
+			'--badge-bg-color': props.color,
+			'--badge-border-color': props.color,
+			'--badge-text-color': 'white',
+		};
+	} else {
+		// Inactive state: transparent background with colored text and border
+		return {
+			'--badge-bg-color': 'transparent',
+			'--badge-border-color': props.color,
+			'--badge-text-color': props.color,
+		};
+	}
+})
 </script>
 
 <style scoped>
@@ -59,6 +84,12 @@ const badgeClass = computed(() => ({
 
 .c-badge--white::part(base) {
 	@apply text-white border-white bg-transparent
+}
+
+.c-badge--custom::part(base) {
+	background-color: var(--badge-bg-color);
+	border-color: var(--badge-border-color);
+	color: var(--badge-text-color);
 }
 
 .c-badge--large::part(base) {

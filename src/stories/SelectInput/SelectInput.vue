@@ -80,6 +80,14 @@ const comboboxBackgroundColor = computed(() => {
 	return props.valid ? '#F8FAFC' : '#FFFFFF'
 });
 
+const comboboxPaddingTop = computed(() => {
+	return props.label ? '24px' : '8px'
+});
+
+const expandIconMarginTop = computed(() => {
+	return props.label ? '-12px' : '0'
+});
+
 const labelClass = computed(() => {
 	if (focus.value) {
 		return 'text-sky-500';
@@ -100,7 +108,8 @@ const labelClass = computed(() => {
 .c-select::part(combobox) {
 	border-color: v-bind('comboboxBorderColor');
 	background-color: v-bind('comboboxBackgroundColor');
-	@apply shadow-none text-base min-h-fit px-4 pb-2 pt-6 rounded-xl border;
+	padding-top: v-bind('comboboxPaddingTop');
+	@apply shadow-none text-base min-h-fit px-4 pb-2 rounded-xl border;
 }
 
 .c-select--open::part(combobox) {
@@ -112,7 +121,7 @@ const labelClass = computed(() => {
 }
 
 .c-select::part(expand-icon) {
-	@apply -mt-3;
+	margin-top: v-bind('expandIconMarginTop');
 }
 
 .c-select::part(display-input) {

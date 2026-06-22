@@ -4,6 +4,7 @@
 			v-bind="$attrs"
 			class="c-select"
 			:placeholder="placeholder"
+			:value="modelValue"
 			ref="singleSelect"
 			@sl-show="focus = true"
 			@sl-hide="focus = false"
@@ -61,9 +62,10 @@ const emit = defineEmits<{
 }>();
 
 const updateValue = (event: Event) => {
-	const target = event.target as HTMLSelectElement;
-	emit('update:modelValue', target.value);
-	emit('change', target.value);
+	const target = event.target as HTMLInputElement & { value: string | number };
+	const value = target.value;
+	emit('update:modelValue', value);
+	emit('change', value);
 };
 
 const comboboxBorderColor = computed(() => {

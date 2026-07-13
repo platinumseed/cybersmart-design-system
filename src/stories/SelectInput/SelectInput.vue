@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
+import { ref, computed, watch, nextTick } from 'vue';
 import '@shoelace-style/shoelace/dist/components/select/select.js';
 import '@shoelace-style/shoelace/dist/components/option/option.js';
 
@@ -60,8 +60,24 @@ const emit = defineEmits<{
 	(e: 'change', value: string | number): void 
 }>();
 
-const updateValue = (event: Event) => {
-	const target = event.target as HTMLSelectElement;
+const singleSelect = ref<HTMLElement & { value: string | number } | null>(null);
+
+// Defensive watcher: re-applies the value once the sl-select custom element
+// (and its slotted sl-option children) are fully upgraded/rendered.
+// Also keeps the select in sync if modelValue changes externally later.
+watch(
+	() => props.modelValue,
+	async (val) => {
+		await nextTick();
+		if (singleSelect.value && singleSelect.value.value !== val) {
+			singleSelect.value.value = val;
+		}
+	},
+	{ immediate: true }
+);
+
+const updateValue = (event: CustomEvent) => {
+	const target = event.target as HTMLElement & { value: string | number };
 	emit('update:modelValue', target.value);
 	emit('change', target.value);
 };

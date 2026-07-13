@@ -31,7 +31,7 @@ export const Default: Story = {
 	render: (args) => ({
 		components: { SelectInput },
 		setup() {
-			const value = ref('');
+			const value = ref('value-1');
 			return { args, value };
 		},
 		template: `<SelectInput v-bind="args" v-model="value" @change="console.log('changed')" />`,

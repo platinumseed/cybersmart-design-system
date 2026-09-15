@@ -67,14 +67,15 @@
 		</div>
 	</div>
 	
-	<div @click="flipCard" class="perspective-1000 cursor-pointer md:hidden">
-		<div :class="{'!rotate-y-180': isFlipped}" class="relative transform-style-3d transition-transform duration-1000 transform">
-			<div class="backface-hidden absolute w-full h-full inset-0 rotate-y-0">
+	<div @click="flipCard" class="grid perspective-1000 cursor-pointer md:hidden">
+		<div :class="{'!rotate-y-180': isFlipped}" class="grid grid-cols-1 grid-rows-1 relative transform-style-3d transition-transform duration-1000 transform">
+			<div class="col-start-1 row-start-1 backface-hidden rotate-y-0">
 				<div 
 					class="
 						c-cta-card 
 						rounded-3xl
 						bg-slate-50 
+						h-full
 					"
 				>
 					<div 
@@ -100,12 +101,13 @@
 					</div>
 				</div>
 			</div>
-			<div class="backface-hidden absolute w-full h-full inset-0 rotate-y-180">
+			<div class="col-start-1 row-start-1 backface-hidden rotate-y-180">
 				<div 
 					class="
 						c-cta-card 
 						rounded-3xl
 						bg-blue
+						h-full
 					"
 				>
 					<div 
@@ -115,68 +117,6 @@
 							gap-1  
 							p-10
 							transition-all
-						"
-					>
-						<div>
-							<div class="text-xl lg:text-2xl 2xl:text-2xl font-medium text-white mb-5" v-html="title"></div>
-							<div class="text-white ">
-								<slot name="description" />
-							</div>
-						</div>
-						<div class="flex gap-4 justify-end">
-							<Button
-								v-if="url"
-								type="primary"
-								v-on:click="()=>({})"
-								label=""
-								icon-before="south_east"
-								@click="handleClick($event)"
-							/>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div v-if="!isFlipped" class="opacity-0">
-				<div 
-					class="
-						c-cta-card 
-					"
-				>
-					<div 
-						class="
-							flex 
-							flex-col 
-							gap-9  
-							p-10
-							transition-all
-						"
-					>
-						<div class="text-blue text-5xl font-semibold max-md:hyphens-manual" v-html="title"></div>	
-						<div class="flex gap-4 justify-end">
-							<Button
-								v-if="url"
-								type="outline"
-								v-on:click="()=>({})"
-								label=""
-								icon-before="south_east"
-								@click="handleClick($event)"
-							/>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div v-else class="opacity-0">
-				<div 
-					class="
-						c-cta-card 
-					"
-				>
-					<div 
-						class="
-							flex 
-							flex-col 
-							gap-1  
-							p-10
 						"
 					>
 						<div>

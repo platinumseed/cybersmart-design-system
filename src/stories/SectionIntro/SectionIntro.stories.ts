@@ -7,6 +7,7 @@ const meta: Meta<typeof SectionIntro> = {
 	component: SectionIntro,
 	args: {
 		title: 'Choose Cybersmart for:',
+		titleEl: 'h1',
 		subtitle: 'smart features',
 		description: 'No matter the size of your business or the needs of your company, you need to be connected. Cybersmart has the solution for you.',
 	},

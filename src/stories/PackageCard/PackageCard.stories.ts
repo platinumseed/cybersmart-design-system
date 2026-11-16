@@ -84,3 +84,26 @@ export const PromoInfo: Story = {
 		`,
 	}),
 };
+
+export const Promotion: Story = {
+	args: {
+		title: 'Home Fibre 100Mbps / 100Mbps',
+		ribbonText: 'On Promotion',
+		originalCost: 'R605.00',
+		cost: 'R499.00 per month',
+		costNote: 'Promotional monthly price for the first three months.',
+		setupCost: 'R399.00 once-off setup fee',
+	},
+	render: (args) => ({
+		components: { PackageCard },
+		setup: () => ({ args }),
+		template: `
+			<PackageCard v-bind="args">
+				<template #moreInfo>
+					<p>100Mbps Download / 100Mbps Upload</p>
+					<p>Promotional monthly price for the first three months.</p>
+				</template>
+			</PackageCard>
+		`,
+	}),
+};

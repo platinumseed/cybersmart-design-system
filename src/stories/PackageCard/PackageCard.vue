@@ -9,7 +9,7 @@
 			<p v-if="description" class="text-lg lg:text-lg 2xl:text-base font-light mt-4" :class="active ? 'text-white' : 'text-slate-500'">{{ description }}</p>
 			<div class="text-lg lg:text-lg 2xl:text-base font-semibold mt-6" :class="active ? 'text-white' : 'text-digital-black'">
 				<del v-if="originalCost" class="font-light mr-2"><span class="sr-only">Original price: </span>{{ originalCost }}</del>
-				<span class="text-[hsl(348,100%,61%)]"><span v-if="originalCost" class="sr-only">Promotion price: </span>{{ cost }}</span>
+				<span :class="originalCost ? 'text-[hsl(348,100%,61%)]' : ''"><span v-if="originalCost" class="sr-only">Promotion price: </span>{{ cost }}</span>
 				<div v-if="setupCost" class="text-base font-light mt-2">{{ setupCost }}</div>
 			</div>
 			<div v-if="costNote" class="text-base font-bold whitespace-pre-line mt-2" :class="active ? 'text-white' : 'text-digital-black'">({{ costNote }})</div>

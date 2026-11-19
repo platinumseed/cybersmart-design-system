@@ -1,18 +1,19 @@
 <template>
 	<div class="c-package-card px-8 py-14 rounded-3xl border relative overflow-hidden h-full" :class="cardClasses">
-		<div v-if="ribbonText" class="absolute top-0 left-0 w-full bg-blue py-2 flex items-center justify-center gap-2 rounted-t-3xl">
+		<div v-if="ribbonText" class="absolute top-0 left-0 w-full bg-navy py-2 flex items-center justify-center gap-2 rounted-t-3xl">
 			<div v-if="ribbonIcon" class="material-symbols-outlined text-white">{{ ribbonIcon }}</div>
 			<div class="text-white text-sm font-bold">{{ ribbonText }}</div>
 		</div>
 		<div class="flex flex-col justify-between items-center text-center h-full">
 			<div class="text-2xl lg:text-2xl 2xl:text-3xl font-semibold" :class="active ? 'text-white' : 'text-blue'">{{ title }}</div>
+			<div v-if="costNote" class="text-base font-bold whitespace-pre-line mt-2" :class="active ? 'text-white' : 'text-digital-black'">({{ costNote }})</div>
 			<p v-if="description" class="text-lg lg:text-lg 2xl:text-base font-light mt-4" :class="active ? 'text-white' : 'text-slate-500'">{{ description }}</p>
 			<div class="text-lg lg:text-lg 2xl:text-base font-semibold mt-6" :class="active ? 'text-white' : 'text-digital-black'">
 				<del v-if="originalCost" class="font-light mr-2"><span class="sr-only">Original price: </span>{{ originalCost }}</del>
 				<span :class="originalCost ? 'text-[hsl(348,100%,61%)]' : ''"><span v-if="originalCost" class="sr-only">Promotion price: </span>{{ cost }}</span>
 				<div v-if="setupCost" class="text-base font-light mt-2">{{ setupCost }}</div>
 			</div>
-			<div v-if="costNote" class="text-base font-bold whitespace-pre-line mt-2" :class="active ? 'text-white' : 'text-digital-black'">({{ costNote }})</div>
+			
 			<Button 
 				v-if="ctaLabel" 
 				:type="buttonStyle" 
